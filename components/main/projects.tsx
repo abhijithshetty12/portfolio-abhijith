@@ -19,7 +19,44 @@ interface ProjectItem {
 }
 
 export const Projects = () => {
-  const typedProjects = PROJECTS as unknown as ProjectItem[];
+  // Base constants fetch array wrapper
+  const rawProjects = PROJECTS as unknown as ProjectItem[];
+
+  // Define and prep the static fields for the EduFlow platform configuration
+  const eduFlowProject: ProjectItem = {
+    title: "EduFlow",
+    description: "EduFlow is a modern education management platform built to help students, administrators, and institutions streamline learning workflows. It provides a clean, role-based experience for managing onboarding, compliance, course registration, payments, documents, notifications, and AI-powered support—backed by Firebase for authentication and data storage.",
+    image: "/projects/eduflow.png",
+    link: "https://eduflow-nextgen.vercel.app/",
+    github: "https://github.com/abhijithshetty12/EduFlow",
+    tags: ["React", "Firebase", "Tailwind CSS", "TypeScript"]
+  };
+
+  // Splice/insert EduFlow right into index 2 so it reliably manifests as Sector 03
+  const typedProjects = [...rawProjects];
+  typedProjects.splice(2, 0, eduFlowProject);
+
+  // Minor yet noteworthy system deployments list configurations
+  const noteworthyProjects = [
+    {
+      title: "Contact Manager",
+      description: "An offline desktop platform engineered using Java Swing with automated CSV persistence routines. Developed as an industry practices mini-project optimizing basic structural file schemas.",
+      github: "https://github.com/abhijithshetty12/Contact-Manager",
+      tags: ["Java", "Swing", "CSV Parsing"]
+    },
+    {
+      title: "Hardware Shop Management",
+      description: "A highly resilient enterprise management solution optimized for hardware distributors. Built on a desktop architecture utilizing C# Windows Forms and high-performance SQL Server schemas.",
+      github: "https://github.com/abhijithshetty12/Hardware-Shop-Management",
+      tags: ["C#", "WinForms", "SQL Server"]
+    },
+    {
+      title: "BFS Maze Solver",
+      description: "A modern JavaFX application that visualizes the Breadth-First Search (BFS) algorithm as it navigates a 2D grid-based maze. This tool provides a clear visual representation of how pathfinding algorithms find the shortest path while avoiding obstacles.",
+      github: "https://github.com/abhijithshetty12/MazeSolver",
+      tags: ["Java", "Algorithms", "Graph Traversal"]
+    }
+  ];
 
   return (
     <section
@@ -69,10 +106,15 @@ export const Projects = () => {
       </motion.div>
 
       {/* ── Projects Structural Alternating Stack ── */}
-      <div className="relative z-10 flex flex-col gap-28 md:gap-40 w-full max-w-6xl px-6 sm:px-10">
+      <div className="relative z-10 flex flex-col gap-28 md:gap-40 w-full max-w-6xl px-6 sm:px-10 mb-44">
         {typedProjects.map((project, index) => {
           const isEven = index % 2 === 0;
           const technicalTags = project.tags || ["TypeScript", "Next.js", "Tailwind"];
+          
+          // Dynamically intercept and swap description if the map iteration target matches SkySense
+          const displayDescription = project.title === "SkySense" 
+            ? "SkySense is a modern weather dashboard that combines real-time meteorological data with AI-powered predictions. Featuring glassmorphic UI in light and dark modes, it delivers clean forecasts, ensemble ML analytics, and intuitive visualizations for accurate, user-friendly weather insights."
+            : project.description;
 
           return (
             <motion.div
@@ -113,7 +155,7 @@ export const Projects = () => {
                   ${isEven ? "lg:-ml-16" : "lg:-mr-16"} 
                   hover:border-white/[0.08] hover:bg-white/[0.02] hover:shadow-[0_30px_70px_rgba(0,0,0,0.8),inset_0_1.5px_12px_rgba(255,255,255,0.05)] transition-all duration-500 group/card`}
               >
-                {/* Orbital Index */}
+                {/* Orbital Index Indicators */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex -space-x-2">
                     <div className="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
@@ -129,7 +171,7 @@ export const Projects = () => {
                 </h3>
 
                 <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-light">
-                  {project.description}
+                  {displayDescription}
                 </p>
 
                 {/* Dark Technical Chips */}
@@ -170,6 +212,68 @@ export const Projects = () => {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* ── Noteworthy Technical Artifacts Grid ── */}
+      <div className="relative z-10 w-full max-w-6xl px-6 sm:px-10 flex flex-col items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full flex flex-col items-center justify-center mb-16 select-none"
+        >
+          <h3 className="text-2xl font-extrabold tracking-tight text-center text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 md:text-3xl mb-4">
+            Other Noteworthy Artifacts
+          </h3>
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+          {noteworthyProjects.map((subProject, i) => (
+            <motion.div
+              key={subProject.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group/minor flex flex-col justify-between p-6 rounded-2xl border border-white/[0.03] bg-white/[0.01] backdrop-blur-xl shadow-[inset_0_1px_2px_rgba(255,255,255,0.02)] hover:border-white/[0.07] hover:bg-white/[0.02] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-600 group-hover/minor:text-cyan-500/60 transition-colors duration-300 uppercase">
+                    Build Module 0{i + 1}
+                  </span>
+                  <Link
+                    href={subProject.github}
+                    target="_blank"
+                    className="p-2 rounded-lg bg-white/[0.01] border border-white/[0.03] text-zinc-500 hover:text-white hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-300"
+                  >
+                    <FaGithub className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+
+                <h4 className="text-lg font-bold tracking-tight text-zinc-200 group-hover/minor:text-white transition-colors duration-300 mb-2">
+                  {subProject.title}
+                </h4>
+
+                <p className="text-zinc-500 group-hover/minor:text-zinc-400 transition-colors duration-300 text-xs leading-relaxed font-light mb-6">
+                  {subProject.description}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-1">
+                {subProject.tags.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-0.5 text-[9px] font-medium rounded-md bg-white/[0.01] border border-white/[0.03] text-zinc-500"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

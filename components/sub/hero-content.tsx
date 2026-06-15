@@ -125,7 +125,7 @@ export const HeroContent = () => {
 
           {/* Secondary Pure Glassmorphic Button */}
           <a
-            href="mailto:abhijithshetty2006@gmail.com"
+            href="/contact"
             className="text-center py-3 sm:py-2.5 px-6 rounded-full text-xs font-medium tracking-wider text-zinc-300 border border-white/[0.08] bg-white/[0.02] hover:bg-cyan-950/20 hover:text-cyan-300 hover:border-cyan-500/30 backdrop-blur-xl shadow-[0_4px_12px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.03)] transition-all duration-300 active:scale-95"
           >
             Contact Me
