@@ -45,7 +45,7 @@ export const Footer = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/black-hole.mp4" type="video/mp4" />
+          <source src="/videos/black-hole-footer.mp4" type="video/mp4" />
         </video>
       </div>
 
