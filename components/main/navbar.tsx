@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Imported react-icons vector modules
-import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope } from "react-icons/hi2";
+// Imported react-icons vector modules (added HiAcademicCap for alternative look if preferred)
+import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope, HiAcademicCap } from "react-icons/hi2";
 
 import { NAV_LINKS } from "@/constants";
 
@@ -13,7 +13,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   "Home": HiHome,
   "About": HiUser,
   "Skills": HiCommandLine,
-  "Projects": HiBriefcase,
+  "Experience": HiBriefcase, // 👈 Added Experience Mapping
+  "Projects": HiAcademicCap,  // 👈 Switched Projects to AcademicCap, or keep both as HiBriefcase
   "Contact": HiEnvelope,
 };
 

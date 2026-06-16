@@ -154,6 +154,10 @@ export const NAV_LINKS = [
     link: "/skills",
   },
   {
+    title: "Experience",
+    link: "/experience",
+  },
+  {
     title: "Projects",
     link: "/projects",
   },
