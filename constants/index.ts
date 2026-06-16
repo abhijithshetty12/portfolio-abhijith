@@ -1,4 +1,3 @@
-import { FaYoutube, FaFacebook } from "react-icons/fa";
 import {
   RxDiscordLogo,
   RxGithubLogo,
@@ -74,69 +73,6 @@ export const PROJECTS = [
     image: "/projects/skysense.png",
     link: "https://skysense-weather.vercel.app/",
     github: "https://github.com/abhijithshetty12/skysense",
-  },
-] as const;
-
-export const FOOTER_DATA = [
-  {
-    title: "Community",
-    data: [
-      {
-        name: "YouTube",
-        icon: FaYoutube,
-        link: "https://youtube.com",
-      },
-      {
-        name: "GitHub",
-        icon: RxGithubLogo,
-        link: "https://github.com/abhijithshetty12",
-      },
-      {
-        name: "Discord",
-        icon: RxDiscordLogo,
-        link: "https://discord.com",
-      },
-    ],
-  },
-  {
-    title: "Social Media",
-    data: [
-      {
-        name: "Instagram",
-        icon: RxInstagramLogo,
-        link: "https://instagram.com/trulyabhijith",
-      },
-      {
-        name: "Twitter",
-        icon: RxTwitterLogo,
-        link: "https://twitter.com",
-      },
-      {
-        name: "Linkedin",
-        icon: RxLinkedinLogo,
-        link: "https://www.linkedin.com/in/abhijithshetty12/",
-      },
-    ],
-  },
-  {
-    title: "About",
-    data: [
-      {
-        name: "Become Sponsor",
-        icon: null,
-        link: "https://youtube.com",
-      },
-      {
-        name: "Learning about me",
-        icon: null,
-        link: "https://example.com",
-      },
-      {
-        name: "Contact Me",
-        icon: null,
-        link: "mailto:abhijithshetty2006@gmail.com",
-      },
-    ],
   },
 ] as const;
 

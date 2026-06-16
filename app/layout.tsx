@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
 
-import { Footer } from "@/components/main/footer";
-import { Navbar } from "@/components/main/navbar";
-import { StarsCanvas } from "@/components/main/star-background";
+import { CustomCursor } from "@/components/custom-cursor"; // Imported the custom cursor
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { StarsCanvas } from "@/components/star-background";
 import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
 
@@ -23,10 +24,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body
         className={cn(
-          "bg-[#030014] overflow-y-scroll overflow-x-hidden",
+          "bg-[#030014] overflow-y-scroll overflow-x-hidden antialiased",
           inter.className
         )}
       >
+        {/* Global interactive smooth-tracking cursor canvas */}
+        <CustomCursor />
+        
         <StarsCanvas />
         <Navbar />
         {children}

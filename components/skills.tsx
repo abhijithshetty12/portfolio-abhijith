@@ -3,11 +3,9 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { SparklesIcon } from "@heroicons/react/24/solid";
 import { HiOutlineEye, HiOutlineArrowDownTray } from "react-icons/hi2";
 import { StarsCanvas } from "./star-background";
 
-// Animation Variants imported directly from your motion system
 import {
   slideInFromLeft,
   slideInFromRight,
@@ -127,21 +125,21 @@ export const Skills = () => {
             className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-4"
           >
             The Secret{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-fuchsia-400 italic font-cursive pl-2 pr-4 inline-block normal-case">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7a3ef8] via-[#e59800] to-[#fcd34d] italic font-cursive pl-2 pr-4 inline-block normal-case drop-shadow-[0_2px_20px_rgba(229,152,0,0.15)]">
               Sauce
             </span>
           </motion.h2>
 
           {/* Subheading text statement */}
-          <motion.div
+          <motion.p
             variants={slideInFromRight(0.5)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-zinc-400 font-light text-sm sm:text-lg max-w-md"
+            className="text-zinc-400 font-light text-sm sm:text-lg max-w-lg mt-2"
           >
-            Never miss a task, deadline or idea.
-          </motion.div>
+            The precise blend of modern frameworks, robust architectures, and intuitive design patterns.
+          </motion.p>
 
           <div className="w-14 h-[2px] bg-gradient-to-r from-amber-500/50 to-purple-500/50 rounded-full mt-6 shadow-[0_0_10px_rgba(245,158,11,0.4)]" />
         </div>

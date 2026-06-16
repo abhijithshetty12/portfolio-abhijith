@@ -4,9 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope } from "react-icons/hi2";
+import {NAV_LINKS} from "@/constants"
 
 const GENERAL_LINKS = [
-  { name: "Home", link: "/hero", icon: HiHome },
+  { name: "Home", link: "/", icon: HiHome },
   { name: "About", link: "/about", icon: HiUser },
   { name: "Skills", link: "/skills", icon: HiCommandLine },
   { name: "Projects", link: "/projects", icon: HiBriefcase },

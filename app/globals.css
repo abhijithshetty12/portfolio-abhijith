@@ -466,3 +466,12 @@ html {
     box-shadow: 0 0 22px rgba(34, 197, 94, 0.9);
   }
 }
+
+@layer base {
+  /* Hide native cursor globally on desktop windows */
+  @media (min-width: 768px) {
+    html, body, a, button, input, select, textarea {
+      cursor: none !important;
+    }
+  }
+}
