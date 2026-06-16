@@ -9,7 +9,10 @@ import { StarsCanvas } from "@/components/star-background";
 import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
 
+import { RouteTransitions } from "@/components/route-transitions";
+
 import "./globals.css";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +36,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         
         <StarsCanvas />
         <Navbar />
-        {children}
+        <RouteTransitions>{children}</RouteTransitions>
         <Footer />
       </body>
     </html>
