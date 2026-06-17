@@ -1,4 +1,3 @@
-````markdown
 # 🌌 Abhijith Space Portfolio
 
 <p align="center">
@@ -76,7 +75,7 @@ Built using **Next.js App Router** and **TypeScript**, the portfolio delivers a 
 | Styling | Tailwind CSS |
 | Animations | Framer Motion |
 | Code Quality | ESLint, TypeScript Compiler |
-| Deployment | Netlify |
+| Deployment | Vercel |
 
 ---
 
