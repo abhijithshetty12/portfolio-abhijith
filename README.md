@@ -154,7 +154,6 @@ abhijith-space-portfolio/
 ├── lib/                 # Utility functions
 ├── public/              # Static assets
 │
-├── netlify.toml         # Netlify configuration
 ├── next.config.js       # Next.js configuration
 ├── tailwind.config.ts   # Tailwind configuration
 ├── tsconfig.json        # TypeScript configuration
@@ -165,22 +164,26 @@ abhijith-space-portfolio/
 
 ## 🚀 Deployment
 
-### Netlify
+### Vercel
 
-This project includes a production-ready `netlify.toml` configuration.
+This project is optimized for seamless deployment on Vercel, the platform built by the creators of Next.js.
 
 #### Deploy Steps
 
-1. Push the repository to GitHub.
-2. Import the repository into Netlify.
-3. Set the build command:
+1. Push your repository to GitHub.
+2. Sign in to Vercel.
+3. Click **New Project** and import your repository.
+4. Vercel will automatically detect the Next.js framework settings.
+5. Click **Deploy** and wait for the build to complete.
+6. Your portfolio will be live with automatic deployments enabled for future commits.
 
-```bash
-npm run build
-```
+### Why Vercel?
 
-4. Configure the publish directory if required.
-5. Deploy the site.
+- ⚡ Optimized for Next.js applications
+- 🚀 Automatic CI/CD deployments
+- 🌍 Global Edge Network
+- 🔒 Free SSL certificates
+- 📈 Built-in analytics and performance monitoring
 
 ---
 
@@ -205,4 +208,3 @@ Your support helps increase visibility and motivates continued improvements and 
 <p align="center">
   Made with ❤️ using Next.js, TypeScript, and Three.js
 </p>
-````
