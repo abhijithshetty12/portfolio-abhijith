@@ -1,10 +1,27 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
 export function ResumePreviewFab() {
   const [open, setOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  
+  const { scrollY } = useScroll();
+
+  // Hide button on desktop when scrolling down, show when scrolling up
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    
+    // Only apply this logic on desktop screens (width >= 768px)
+    if (window.innerWidth >= 768) {
+      if (latest > previous && latest > 150) {
+        setIsHidden(true);  // Scrolling down -> Hide
+      } else {
+        setIsHidden(false); // Scrolling up -> Show
+      }
+    }
+  });
 
   const resumeHref = useMemo(() => '/resume.pdf', []);
 
@@ -32,11 +49,15 @@ export function ResumePreviewFab() {
 
   return (
     <>
-      {/* Trigger Button:
-        Mobile: Micro-sized, text-only ("Resume"), safely placed in the bottom right corner
-        Desktop: Full signature layout ("Resume | Preview"), placed in top right corner
-      */}
-      <div className="fixed bottom-6 right-6 md:top-5 md:right-5 md:bottom-auto z-[110]">
+      {/* Wrapped the container in a motion.div to control scroll translation */}
+      <motion.div 
+        className="fixed bottom-6 right-6 md:top-5 md:right-5 md:bottom-auto z-[110]"
+        animate={{ 
+          y: isHidden ? -100 : 0,
+          opacity: isHidden ? 0 : 1 
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         <button
           type="button"
           aria-label="Preview resume"
@@ -48,21 +69,18 @@ export function ResumePreviewFab() {
             'hover:bg-white/[0.08] hover:border-white/[0.15] active:scale-[0.94] md:active:scale-[0.96] transition-all duration-200'
           }
         >
-          {/* Main "Resume" copy remains visible across all screens */}
           <span className="text-[11px] font-medium tracking-wide text-zinc-200 group-hover:text-white transition-colors">
             Resume
           </span>
           
-          {/* Hidden on mobile, shown on desktop (md:) */}
           <div className="hidden md:block h-2.5 w-[1px] bg-white/[0.12]" />
           <span className="hidden md:block text-[10px] font-medium text-zinc-400 group-hover:text-zinc-300 transition-colors">
             Preview
           </span>
           
-          {/* Status glow dot scales down beautifully for mobile view */}
           <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
         </button>
-      </div>
+      </motion.div>
 
       {/* Main Preview Modal */}
       <AnimatePresence>
