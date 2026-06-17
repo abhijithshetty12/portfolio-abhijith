@@ -1,19 +1,18 @@
-# 🌌 Abhijith Space Portfolio
+# 🌌 Abhijith Portfolio
 
 <p align="center">
   <strong>An immersive 3D portfolio experience built with Next.js, TypeScript, and Three.js.</strong>
 </p>
 
 <p align="center">
+  <a href="https://your-live-demo-url.com">
+    <img src="https://img.shields.io/badge/Live_Demo-000000?style=flat&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
   <img src="https://img.shields.io/badge/Next.js_14-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript_5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Three.js-000000?style=flat&logo=threedotjs&logoColor=white" alt="Three.js" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white" alt="Framer Motion" />
-</p>
-
-<p align="center">
-  <a href="https://your-live-demo-url.com">🚀 Live Demo</a>
 </p>
 
 ---
