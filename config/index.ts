@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
-  title: "Abhijith Shetty | Space Portfolio",
+  title: "Abhijith Shetty",
   description: "Welcome to my full stack Next.js 14 space portfolio.",
   keywords: [
     "reactjs",
@@ -40,27 +40,27 @@ export const siteConfig: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Abhijith Shetty | Space Portfolio",
+    title: "Abhijith Shetty",
     description: "Welcome to my full stack Next.js 14 space portfolio.",
     images: [
       {
         url: "/og?section=home",
         width: 1200,
         height: 630,
-        alt: "Abhijith Space Portfolio preview",
+        alt: "Abhijith Portfolio preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhijith Shetty | Space Portfolio",
+    title: "Abhijith Shetty",
     description: "Welcome to my full stack Next.js 14 space portfolio.",
     images: [
       {
         url: "/og?section=home",
         width: 1200,
         height: 630,
-        alt: "Abhijith Space Portfolio preview",
+        alt: "Abhijith Portfolio preview",
       },
     ],
   },

@@ -82,7 +82,7 @@ export const Skills = () => {
     <section
       id="skills"
       ref={containerRef}
-      className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-24 px-4 bg-[#02000a]"
+      className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-24 px-4"
     >
       {/* Background Layer: Deep violet-tinted starfield */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
