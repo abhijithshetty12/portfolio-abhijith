@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Imported react-icons vector modules (added HiAcademicCap for alternative look if preferred)
 import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope, HiAcademicCap } from "react-icons/hi2";
 
 import { NAV_LINKS } from "@/constants";
