@@ -10,7 +10,6 @@ import { StarsCanvas } from "./star-background";
 import { FaGithub } from "react-icons/fa";
 import { HiArrowUpRight, HiSparkles } from "react-icons/hi2";
 
-// ── TYPES & INTERFACES ──
 type ProjectCardProps = {
   src: string;
   title: string;
@@ -31,7 +30,6 @@ interface ProjectItem {
   tags?: string[];
 }
 
-// ── SUB-COMPONENT: REFACTORED PROJECT CARD ──
 export const ProjectCard = ({
   src,
   title,
@@ -52,7 +50,6 @@ export const ProjectCard = ({
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
       } items-center gap-8 lg:gap-0 relative w-full`}
     >
-      {/* Media Container (Image Layer) */}
       <div className="w-full lg:w-[60%] relative group">
         <div className="absolute -inset-px bg-gradient-to-b from-white/[0.08] to-transparent rounded-2xl opacity-40 group-hover:opacity-100 transition-all duration-700 blur-[2px]" />
 
@@ -75,13 +72,11 @@ export const ProjectCard = ({
         </div>
       </div>
 
-      {/* Refractive Glass Text Card */}
       <div
         className={`w-full lg:w-[46%] flex flex-col justify-center p-8 sm:p-10 rounded-3xl border border-white/[0.04] bg-white/[0.01] backdrop-blur-2xl shadow-[0_30px_70px_rgba(0,0,0,0.65),inset_0_1.5px_8px_rgba(255,255,255,0.03)] relative z-20
           ${isEven ? "lg:-ml-16" : "lg:-mr-16"} 
           hover:border-indigo-400/30 hover:bg-white/[0.04] hover:shadow-[0_30px_70px_rgba(99,102,241,0.05),inset_0_1.5px_12px_rgba(255,255,255,0.05)] transition-all duration-500 group/card`}
       >
-        {/* Orbital Index Indicators */}
         <div className="flex items-center gap-4 mb-6">
           <div className="flex -space-x-2">
             <div className="w-3 h-3 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
@@ -100,7 +95,6 @@ export const ProjectCard = ({
           {description}
         </p>
 
-        {/* Dark Technical Chips */}
         <div className="flex flex-wrap gap-1.5 mb-8">
           {tags.map((tech: string) => (
             <span
@@ -112,7 +106,6 @@ export const ProjectCard = ({
           ))}
         </div>
 
-        {/* Navigation Controls */}
         <div className="flex items-center gap-5">
           <Link
             href={link}
@@ -141,7 +134,6 @@ export const ProjectCard = ({
   );
 };
 
-// ── MAIN LAYOUT COMPONENT ──
 export const Projects = () => {
   const rawProjects = PROJECTS as unknown as ProjectItem[];
 
@@ -183,12 +175,10 @@ export const Projects = () => {
       id="projects"
       className="relative flex flex-col items-center justify-center min-h-screen py-32 overflow-hidden bg-[#030307] selection:bg-zinc-800 selection:text-zinc-200"
     >
-      {/* Background Layer */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <StarsCanvas />
       </div>
 
-      {/* Header Area */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -223,7 +213,6 @@ export const Projects = () => {
         </motion.p>
       </motion.div>
 
-      {/* Projects Structural Alternating Stack */}
       <div className="relative z-10 flex flex-col gap-28 md:gap-40 w-full max-w-6xl px-6 sm:px-10 mb-44">
         {typedProjects.map((project, index) => {
           const isEven = index % 2 === 0;
@@ -249,7 +238,6 @@ export const Projects = () => {
         })}
       </div>
 
-      {/* Noteworthy Technical Artifacts Grid */}
       <div className="relative z-10 w-full max-w-6xl px-6 sm:px-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

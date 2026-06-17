@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
 
-import { CustomCursor } from "@/components/custom-cursor"; // Imported the custom cursor
+import { CustomCursor } from "@/components/custom-cursor";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { StarsCanvas } from "@/components/star-background";
@@ -33,7 +33,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           inter.className
         )}
       >
-        {/* Global interactive smooth-tracking cursor canvas */}
         <CustomCursor />
         
         <StarsCanvas />

@@ -53,7 +53,6 @@ export function GlassSlider({
           (disabled ? "opacity-60" : "")
         }
       >
-        {/* Track */}
         <div className="relative px-4 py-4">
           <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-1 rounded-full bg-white/[0.08]" />
           <div
@@ -64,7 +63,6 @@ export function GlassSlider({
             style={{ width: `calc(${percent}% )` }}
           />
 
-          {/* Range input (thumb + keyboard) */}
           <input
           aria-label={label ?? "Slider"}
           type="range"
@@ -80,7 +78,6 @@ export function GlassSlider({
           className="glass-slider"
         />
 
-          {/* Thumb glow */}
           <div
             aria-hidden="true"
             className={

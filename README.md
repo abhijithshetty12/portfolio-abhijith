@@ -1,105 +1,165 @@
-<a name="readme-top"></a>
-
-# Abhijith Space Portfolio
-
-![Abhijith Space Portfolio](/.github/images/img_main.png "Abhijith Space Portfolio")
+````markdown
+# 🌌 Abhijith Space Portfolio
 
 <p align="center">
-  <a href="https://github.com/abhijithshetty12">
-    <img alt="GitHub" src="https://img.shields.io/badge/GitHub-abhijithshetty12-181717?style=flat&logo=github" />
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat" />
-  </a>
+  <strong>An immersive 3D portfolio experience built with Next.js, TypeScript, and Three.js.</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js_14-000000?style=flat&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript_5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Three.js-000000?style=flat&logo=threedotjs&logoColor=white" alt="Three.js" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat&logo=framer&logoColor=white" alt="Framer Motion" />
+</p>
+
+<p align="center">
+  <a href="https://your-live-demo-url.com">🚀 Live Demo</a>
 </p>
 
 ---
 
-## 🚀 Overview
+## 📖 Overview
 
-**Abhijith Space Portfolio** is a modern space-themed personal portfolio built with **Next.js** and an interactive **Three.js** background. It’s designed to be smooth, responsive, and visually immersive—showcasing skills, projects, and contact details in a clean, animated UI.
+**Abhijith Space Portfolio** is a modern, interactive portfolio platform inspired by the beauty of the cosmos. Designed to combine creativity with performance, the application showcases professional projects, technical expertise, and personal achievements through immersive 3D visuals, fluid animations, and a responsive user experience.
+
+Built using **Next.js App Router** and **TypeScript**, the portfolio delivers a seamless browsing experience while maintaining scalability, accessibility, and production-grade performance.
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-- 🌌 **Modern Space Theme UI**
-- 🪐 **3D / Animated Background** using **Three.js + @react-three/fiber**
-- ⚡ **Smooth animations** with **framer-motion**
-- 🧩 **Component-based structure** with the Next.js App Router
-- 🎨 **Tailwind CSS** for fast styling + consistent design
-- 📱 Fully responsive layout
+### 🌌 Interactive Cosmic Experience
+
+- Dynamic 3D space environment powered by Three.js
+- Real-time rendered celestial visuals
+- Immersive portfolio presentation
+
+### ⚡ Smooth Animations
+
+- Fluid page transitions and micro-interactions
+- Motion-driven UI powered by Framer Motion
+- Enhanced user engagement and responsiveness
+
+### 🧩 Scalable Architecture
+
+- Built with Next.js App Router
+- Reusable and maintainable component structure
+- Type-safe development workflow with TypeScript
+
+### 🎨 Modern Design System
+
+- Tailwind CSS utility-first styling
+- Consistent visual language and cosmic-themed palette
+- Clean, elegant, and accessible UI
+
+### 📱 Fully Responsive
+
+- Optimized for desktop, tablet, and mobile devices
+- Adaptive layouts for various screen sizes
+- Consistent experience across platforms
+
+### 🛠 Production Ready
+
+- Strict TypeScript configuration
+- ESLint integration
+- Optimized build and deployment workflow
 
 ---
 
 ## 🛠 Tech Stack
 
-| Category | Tools |
-| :--- | :--- |
-| **Framework** | Next.js (App Router) |
-| **Language** | TypeScript |
-| **3D / Graphics** | Three.js, @react-three/fiber, @react-three/drei |
-| **UI / Animations** | Tailwind CSS, framer-motion |
-| **Quality** | ESLint, TypeScript |
+| Category | Technologies |
+|----------|-------------|
+| Frontend | Next.js 14, TypeScript |
+| 3D Graphics | Three.js, React Three Fiber, Drei |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion |
+| Code Quality | ESLint, TypeScript Compiler |
+| Deployment | Netlify |
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Interface Preview
 
-![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
+### Core Experience
 
-![Showcase your skills](/.github/images/img2.png "Showcase your skills")
+| Modern UI/UX | Skill Showcase |
+|:---:|:---:|
+| <img src="./.github/images/img1.png" alt="Modern UI" /> | <img src="./.github/images/img2.png" alt="Skills Section" /> |
 
-![Built with TypeScript](/.github/images/img3.png "Built with TypeScript")
+### Development & Engineering
 
-![Showcase your projects](/.github/images/img4.png "Showcase your projects")
+| TypeScript Architecture | Project Portfolio |
+|:---:|:---:|
+| <img src="./.github/images/img3.png" alt="Architecture" /> | <img src="./.github/images/img4.png" alt="Projects" /> |
 
 ---
 
-## 💻 Getting Started
+## 🚀 Getting Started
 
-1. **Install dependencies**
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/abhijith-space-portfolio.git
+cd abhijith-space-portfolio
+```
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. **Run the development server**
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-3. Open your browser at:
+Open your browser and visit:
 
-- http://localhost:3000
-
----
-
-## 📦 Scripts
-
-- `npm run dev` — start development server
-- `npm run build` — build the app
-- `npm run start` — run production server
-- `npm run lint` — run ESLint
+```text
+http://localhost:3000
+```
 
 ---
 
-## 📁 Folder Structure
+## 📦 Available Scripts
+
+| Command | Description |
+|----------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Create optimized production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint checks |
+
+---
+
+## 📁 Project Structure
 
 ```bash
-abhijith-portfolio/
-  app/
-  components/
-  config/
-  constants/
-  lib/
-  public/
-  netlify.toml
-  next.config.js
-  package.json
-  tailwind.config.ts
-  tsconfig.json
+abhijith-space-portfolio/
+│
+├── app/                 # Next.js App Router pages
+├── components/          # Reusable UI components
+├── config/              # Application configuration
+├── constants/           # Static data and constants
+├── lib/                 # Utility functions
+├── public/              # Static assets
+│
+├── netlify.toml         # Netlify configuration
+├── next.config.js       # Next.js configuration
+├── tailwind.config.ts   # Tailwind configuration
+├── tsconfig.json        # TypeScript configuration
+└── package.json
 ```
 
 ---
@@ -108,25 +168,42 @@ abhijith-portfolio/
 
 ### Netlify
 
-This project includes a `netlify.toml` configuration.
+This project includes a production-ready `netlify.toml` configuration.
 
-1. Push to GitHub
-2. Create a Netlify site
-3. Connect the repository
-4. Build command: `npm run build`
+#### Deploy Steps
+
+1. Push the repository to GitHub.
+2. Import the repository into Netlify.
+3. Set the build command:
+
+```bash
+npm run build
+```
+
+4. Configure the publish directory if required.
+5. Deploy the site.
 
 ---
 
 ## 👨‍💻 Author
 
-**Abhijith Shetty**
+### Abhijith Shetty
 
-- GitHub: https://github.com/abhijithshetty12
+**Front-End Web Developer**
+
+> Passionate about crafting modern web experiences that blend creativity, performance, and user-centric design.
 
 ---
 
-## 🌟 Show Your Support
+## 🌟 Support
 
-If you like this portfolio, give it a ⭐ on GitHub.
+If you enjoyed this project or found it useful, consider giving it a ⭐ on GitHub.
 
+Your support helps increase visibility and motivates continued improvements and new features.
 
+---
+
+<p align="center">
+  Made with ❤️ using Next.js, TypeScript, and Three.js
+</p>
+````

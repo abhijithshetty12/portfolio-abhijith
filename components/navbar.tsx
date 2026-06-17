@@ -7,13 +7,12 @@ import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope, HiAcademicCap }
 
 import { NAV_LINKS } from "@/constants";
 
-// Structural mapping directory pairing your constant layout routes with respective visual indicators
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   "Home": HiHome,
   "About": HiUser,
   "Skills": HiCommandLine,
-  "Experience": HiBriefcase, // 👈 Added Experience Mapping
-  "Projects": HiAcademicCap,  // 👈 Switched Projects to AcademicCap, or keep both as HiBriefcase
+  "Experience": HiBriefcase, 
+  "Projects": HiAcademicCap,  
   "Contact": HiEnvelope,
 };
 
@@ -48,10 +47,8 @@ export const Navbar = () => {
 
   return (
     <div className="w-full fixed top-0 z-50 px-6 md:px-8">
-      {/* ── Outer Shell Container with Flex Layout Isolation ── */}
       <div className="max-w-6xl mx-auto flex items-center justify-between h-[70px] relative">
         
-        {/* Logo and Name - Hidden when scrolled (UNTOUCHED LOGIC) */}
         <Link
           href="/"
           className={`flex items-center transition-opacity duration-300 ${
@@ -71,7 +68,6 @@ export const Navbar = () => {
           </div>
         </Link>
 
-        {/* Central Web Navbar - Now vanishes when scrolled */}
         <div 
           className={`hidden md:flex items-center absolute left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out ${
             isScrolled 
@@ -98,7 +94,6 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Button - Now vanishes when scrolled */}
         <button
           type="button"
           aria-label="Toggle Navigation Module"
@@ -117,7 +112,6 @@ export const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Immersive Space Overlay Glass Design */}
       <div 
         className={`fixed inset-x-0 top-[76px] mx-6 rounded-3xl bg-[#030014]/90 backdrop-blur-2xl border border-white/[0.06] p-6 flex flex-col items-center gap-3 md:hidden shadow-[0_24px_60px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-500 ease-in-out origin-top ${
           isMobileMenuOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"

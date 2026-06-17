@@ -25,7 +25,6 @@ export default function Experience() {
   return (
     <section id="experience" className="w-full min-h-screen py-24 px-6 md:px-8 bg-[#030014] text-white flex flex-col items-center justify-center relative overflow-hidden">
       
-      {/* ── BACKGROUND LAYER ── */}
       <div className="absolute inset-0 z-[0] pointer-events-none">
         <StarsCanvas />
       </div>
@@ -33,10 +32,8 @@ export default function Experience() {
       <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-teal-600/10 rounded-full blur-3xl pointer-events-none z-[1]" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sky-600/10 rounded-full blur-3xl pointer-events-none z-[1]" />
 
-      {/* ── CONTENT LAYER ── */}
       <div className="max-w-4xl w-full relative z-10">
         
-        {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
             History
@@ -46,20 +43,16 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Timeline Shell */}
         <div className="relative border-l border-zinc-800/80 ml-4 md:ml-6 space-y-12">
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative pl-8 md:pl-12 group">
               
-              {/* Timeline Node Point Indicator */}
               <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-[#030014] border-2 border-zinc-700 flex items-center justify-center group-hover:border-teal-500 transition-colors duration-300 shadow-[0_0_15px_rgba(0,0,0,0.8)] z-20">
                 <HiBriefcase className="text-xs text-zinc-400 group-hover:text-teal-400 transition-colors" />
               </div>
 
-              {/* Main Card Element */}
               <div className="rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-white/[0.05] hover:border-white/[0.09] p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.03)] hover:shadow-[0_20px_50px_rgba(56,189,248,0.03)] transition-all duration-300 relative z-10">
                 
-                {/* Header Container */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-5 border-b border-zinc-800/60">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 relative rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
@@ -81,7 +74,6 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Metadata Chips */}
                   <div className="flex flex-wrap sm:flex-col items-start sm:items-end gap-2 text-xs text-zinc-500 font-medium">
                     <div className="flex items-center gap-1.5 bg-white/[0.02] px-3 py-1 rounded-full border border-white/[0.04]">
                       <HiCalendar className="text-sm text-teal-400/80" />
@@ -94,14 +86,11 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Narrative Details Block */}
                 <p className="text-zinc-300 text-sm md:text-base leading-relaxed font-light tracking-wide mb-6">
                   {exp.description}
                 </p>
 
-                {/* Badges & Action Links Row */}
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-zinc-800/40 pt-5">
-                  {/* Tech Stack Tags */}
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill, skillIdx) => (
                       <span 
@@ -113,7 +102,6 @@ export default function Experience() {
                     ))}
                   </div>
 
-                  {/* Project Proof Links */}
                   <div className="flex items-center gap-3 shrink-0">
                     <a 
                       href={exp.links.repo}

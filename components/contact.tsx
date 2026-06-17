@@ -10,7 +10,6 @@ import { IoMailOutline } from "react-icons/io5";
 import { slideInFromTop, slideInFromLeft } from "@/lib/motion";
 import { StarsCanvas } from "./star-background";
 
-/* ─── STRUCTURED DATA ───────────────────────────────────────────────────── */
 
 const INFO_CARDS = [
   {
@@ -49,7 +48,6 @@ const REFINED_SOCIALS = [
   },
 ] as const;
 
-/* ─── COMPONENT ─────────────────────────────────────────────────────────── */
 
 export const ContactContent = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -60,7 +58,6 @@ export const ContactContent = () => {
     setStatus("submitting");
 
     try {
-      // Integrated Web3Forms Submission API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -68,7 +65,7 @@ export const ContactContent = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "8e96e42f-2a2b-4e1b-87f0-1603b5e39e9f", // Web3forms API Access Key
+          access_key: "8e96e42f-2a2b-4e1b-87f0-1603b5e39e9f",
           name: formData.name,
           email: formData.email,
           message: formData.message,
@@ -80,7 +77,6 @@ export const ContactContent = () => {
       if (response.ok && result.success) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
-        // Return back to idle after user visual acknowledgement layout finishes
         setTimeout(() => setStatus("idle"), 6000);
       } else {
         setStatus("error");
@@ -101,17 +97,14 @@ export const ContactContent = () => {
   return (
     <div className="relative flex flex-col items-center min-h-screen w-full px-4 py-28 bg-[#070605] overflow-hidden selection:bg-amber-600/40 selection:text-amber-100">
       
-      {/* ── BACKGROUND LAYER ───────────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <StarsCanvas />
         <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-to-tr from-amber-600/10 to-red-800/5 rounded-full blur-[140px] animate-pulse [animation-duration:6s]" />
         <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-yellow-700/5 to-amber-900/10 rounded-full blur-[160px] animate-pulse [animation-duration:10s]" />
       </div>
 
-      {/* ── FOREGROUND LAYER ───────────────────── */}
       <div className="relative z-10 flex flex-col items-center w-full max-w-5xl">
 
-        {/* ── HEADER SECTION ───────────────────────────────── */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -150,7 +143,6 @@ export const ContactContent = () => {
           </motion.div>
         </motion.div>
 
-        {/* ── INFO CARDS ───────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full mb-8">
           {INFO_CARDS.map(({ Icon, label, sub, display, href }, i) => (
             <motion.div
@@ -183,10 +175,8 @@ export const ContactContent = () => {
           ))}
         </div>
 
-        {/* ── MAIN PANELS ──────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
 
-          {/* — Form Area — */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -328,7 +318,6 @@ export const ContactContent = () => {
             </div>
           </motion.div>
 
-          {/* — Network Ecosystem Links — */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -380,7 +369,6 @@ export const ContactContent = () => {
               </div>
             </div>
 
-            {/* System Status Pill */}
             <div className="flex flex-row items-center gap-4 mt-6 p-4 rounded-lg bg-stone-950/60 border border-stone-900 shadow-[inset_0_1px_4px_rgba(0,0,0,0.6)]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-60" />

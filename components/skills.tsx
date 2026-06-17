@@ -35,13 +35,11 @@ export const Skills = () => {
 
   const RESUME_URL = "/resume.pdf";
 
-  // ── SCROLL PROGRESS TRACKER ──
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  // Maps scroll positions to an elegant 360-degree rotation path
   const rotateValue = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   const getCategorizedSkills = (): readonly SkillItem[] => {
@@ -69,7 +67,6 @@ export const Skills = () => {
 
   const filteredSkills = getCategorizedSkills();
 
-  // Unified image routing path derived from your Data Provider configuration
   const formatImagePath = (path: string): string => {
     if (!path || path.trim() === "") return "/fallback-placeholder.png";
     if (path.startsWith("/") || path.startsWith("http://") || path.startsWith("https://")) {
@@ -84,21 +81,18 @@ export const Skills = () => {
       ref={containerRef}
       className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-24 px-4"
     >
-      {/* Background Layer: Deep violet-tinted starfield */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
         <StarsCanvas />
       </div>
 
       <div className="relative z-10 flex flex-col items-center w-full max-w-5xl mx-auto">
 
-        {/* ── 3D METALLIC GLASS TORUS HERO ── */}
         <motion.div
           style={{ rotate: rotateValue }}
           className="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 relative flex items-center justify-center select-none cursor-grab active:cursor-grabbing drop-shadow-[0_20px_50px_rgba(217,119,6,0.25)]"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 180, damping: 15 }}
         >
-          {/* Dual Dynamic Glowing Aura Cores */}
           <div className="absolute w-48 h-48 bg-amber-500/15 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
           <div className="absolute w-40 h-40 bg-purple-600/10 rounded-full blur-[60px] pointer-events-none mix-blend-screen" />
 
@@ -113,10 +107,8 @@ export const Skills = () => {
           />
         </motion.div>
 
-        {/* ── MERGED SKILLS INTRO TYPOGRAPHY (From skills-text) ── */}
         <div className="w-full h-auto flex flex-col items-center justify-center text-center mt-6 mb-12">
 
-          {/* Core Title */}
           <motion.h2
             variants={slideInFromLeft(0.5)}
             initial="hidden"
@@ -130,7 +122,6 @@ export const Skills = () => {
             </span>
           </motion.h2>
 
-          {/* Subheading text statement */}
           <motion.p
             variants={slideInFromRight(0.5)}
             initial="hidden"
@@ -144,7 +135,6 @@ export const Skills = () => {
           <div className="w-14 h-[2px] bg-gradient-to-r from-amber-500/50 to-purple-500/50 rounded-full mt-6 shadow-[0_0_10px_rgba(245,158,11,0.4)]" />
         </div>
 
-        {/* ── BENTO CATEGORY FILTER TABS ── */}
         <div className="flex flex-wrap justify-center items-center gap-2 px-2 py-1.5 rounded-full bg-white/[0.01] border border-purple-500/[0.08] backdrop-blur-2xl max-w-full overflow-x-auto shadow-[inset_0_1px_2px_rgba(255,255,255,0.01)] mb-14">
           {CATEGORIES.map((category) => (
             <button
@@ -168,7 +158,6 @@ export const Skills = () => {
           ))}
         </div>
 
-        {/* ── SKILLS DISPLAY BENTO GRID ── */}
         <div className="w-full max-w-4xl px-2 min-h-[300px]">
           <motion.div
             layout
@@ -184,16 +173,14 @@ export const Skills = () => {
                   exit={{ opacity: 0, scale: 0.85 }}
                   transition={{
                     duration: 0.25,
-                    delay: index * 0.02, // Staggered orchestration sequence from skill provider
+                    delay: index * 0.02,
                     ease: "easeInOut"
                   }}
                   whileHover={{ y: -5, scale: 1.03 }}
                   className="flex flex-col items-center justify-between p-3.5 w-[100px] h-[105px] sm:w-[110px] sm:h-[115px] rounded-2xl bg-[#090514]/40 border border-purple-500/[0.06] hover:border-amber-400/40 hover:bg-amber-950/[0.08] backdrop-blur-xl shadow-[0_6px_20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.02)] transition-colors duration-300 group relative overflow-hidden z-20"
                 >
-                  {/* Amber Radiant Inner Backglow */}
                   <div className="absolute inset-0 bg-gradient-to-b from-amber-500/0 to-amber-500/0 group-hover:from-amber-500/[0.03] group-hover:to-transparent blur-xl transition-all duration-300 pointer-events-none" />
 
-                  {/* Icon Asset Housing wrapper */}
                   <div className="w-12 h-12 relative flex items-center justify-center my-auto z-30">
                     <Image
                       src={formatImagePath(skill.image)}
@@ -214,7 +201,6 @@ export const Skills = () => {
           </motion.div>
         </div>
 
-        {/* ── CV / RESUME ACTION TERMINAL ── */}
         <div className="mt-24 flex flex-col items-center gap-6 text-center px-4">
           <div className="flex flex-col gap-1">
             <h3 className="text-zinc-200 text-base font-medium tracking-wide">

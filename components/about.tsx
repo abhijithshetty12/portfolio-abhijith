@@ -34,7 +34,6 @@ const itemVariants = {
   },
 } as const;
 
-// ── BLACK MYTH WUKONG: CELESTIAL AMBER CONSTELLATION NODE ──
 const TimelineNode = ({ progress, threshold }: { progress: any, threshold: number }) => {
   const activeGlow = useTransform(progress, [threshold - 0.08, threshold], [0, 1]);
   const nodeScale = useTransform(progress, [threshold - 0.08, threshold, threshold + 0.08], [0.85, 1.25, 1]);
@@ -86,12 +85,10 @@ export const AboutContent = () => {
   return (
     <div ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 py-24 bg-[#030305] overflow-hidden selection:bg-amber-500/20 selection:text-amber-200">
       
-      {/* 3D WebGL Canvas Layer Integration */}
       <div className="absolute inset-0 z-0">
         <StarsCanvas />
       </div>
 
-      {/* --- INTRO SECTION --- */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -135,7 +132,6 @@ export const AboutContent = () => {
         </motion.div>
       </motion.div>
 
-      {/* --- EDUCATION SECTION --- */}
       <motion.div
         ref={timelineRef}
         variants={containerVariants}
@@ -151,7 +147,6 @@ export const AboutContent = () => {
           </h2>
         </motion.div>
 
-        {/* Desktop Zigzag View */}
         <div className="relative hidden md:block pb-12">
           <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[3px] bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-900 opacity-40" />
           
@@ -176,24 +171,20 @@ export const AboutContent = () => {
                   <TimelineNode progress={scrollYProgress} threshold={threshold} />
 
                   <div className="w-full md:w-[46%]">
-                    {/* ── REDESIGNED MYTHICAL SCHOLAR SLAB CARD ── */}
                     <div 
                       onClick={() => toggleDetails(index)}
                       className={`relative p-8 rounded-xl border border-white/[0.03] bg-gradient-to-br from-[#0c0c12] to-[#06060a] shadow-[0_30px_70px_rgba(0,0,0,0.8)] hover:border-amber-500/30 transition-all duration-500 group cursor-pointer overflow-hidden ${
                         isEven ? 'border-r-amber-500/30' : 'border-l-amber-500/30'
                       }`}
                     >
-                      {/* Vertical Gold foil trim running on the inner edge */}
                       <div className={`absolute top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-amber-500/50 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500 ${
                         isEven ? 'right-0' : 'left-0'
                       }`} />
 
-                      {/* Mythical Background Chapter Watermark Script */}
                       <div className="absolute right-4 top-2 text-[5rem] font-black text-white/[0.01] tracking-tighter pointer-events-none select-none font-mono group-hover:text-amber-500/[0.02] transition-colors duration-500">
                         {edu.chapter.split(" ")[1]}
                       </div>
 
-                      {/* Card Header Structure */}
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-[10px] font-mono tracking-widest text-zinc-500 uppercase px-2 py-0.5 rounded bg-white/[0.02] border border-white/5">
                           {edu.chapter}
@@ -218,7 +209,6 @@ export const AboutContent = () => {
                         {edu.location}
                       </div>
                       
-                      {/* Card Footer Grid */}
                       <div className="flex items-center justify-between pt-4 border-t border-white/[0.04]">
                         <div className="flex flex-col">
                           <span className="text-[9px] uppercase tracking-wider text-zinc-600 font-mono">Attainment Score</span>
@@ -256,7 +246,6 @@ export const AboutContent = () => {
           </div>
         </div>
 
-        {/* Mobile Vertical View */}
         <div className="md:hidden px-1">
           <div className="flex flex-col gap-8 relative">
             <div className="absolute left-4 top-2 bottom-2 w-[2px] bg-white/[0.02]" />

@@ -9,16 +9,14 @@ export function ResumePreviewFab() {
   
   const { scrollY } = useScroll();
 
-  // Hide button on desktop when scrolling down, show when scrolling up
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     
-    // Only apply this logic on desktop screens (width >= 768px)
     if (window.innerWidth >= 768) {
       if (latest > previous && latest > 150) {
-        setIsHidden(true);  // Scrolling down -> Hide
+        setIsHidden(true);
       } else {
-        setIsHidden(false); // Scrolling up -> Show
+        setIsHidden(false); 
       }
     }
   });
@@ -49,7 +47,6 @@ export function ResumePreviewFab() {
 
   return (
     <>
-      {/* Wrapped the container in a motion.div to control scroll translation */}
       <motion.div 
         className="fixed bottom-6 right-6 md:top-5 md:right-5 md:bottom-auto z-[110]"
         animate={{ 
@@ -82,7 +79,6 @@ export function ResumePreviewFab() {
         </button>
       </motion.div>
 
-      {/* Main Preview Modal */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -91,7 +87,6 @@ export function ResumePreviewFab() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[200] flex items-end md:items-center justify-center p-0 md:p-4"
           >
-            {/* Premium Translucent Backdrop */}
             <button
               type="button"
               aria-label="Close resume preview"
@@ -99,7 +94,6 @@ export function ResumePreviewFab() {
               className="absolute inset-0 bg-zinc-950/45 backdrop-blur-2xl transition-all duration-300"
             />
 
-            {/* Modal Container */}
             <motion.div
               initial={{ 
                 opacity: 0, 
@@ -115,10 +109,8 @@ export function ResumePreviewFab() {
               transition={{ duration: 0.25, ease: 'easeOut' }}
               className="relative w-full max-w-[1100px] z-10 max-h-[92vh] md:max-h-none"
             >
-              {/* Premium Frosted Card Container */}
               <div className="rounded-t-2xl md:rounded-2xl bg-zinc-950/60 md:bg-zinc-950/40 backdrop-blur-3xl border-t border-x border-white/[0.08] md:border border-white/[0.06] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col max-h-[92vh] md:max-h-none">
                 
-                {/* Header inside modal */}
                 <div className="flex items-center justify-between px-5 py-4 md:px-6 border-b border-white/[0.04] shrink-0 bg-white/[0.01]">
                   <div>
                     <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-cyan-400 font-semibold">
@@ -135,7 +127,6 @@ export function ResumePreviewFab() {
                       Download PDF
                     </a>
                     
-                    {/* Close Button */}
                     <button
                       type="button"
                       onClick={() => setOpen(false)}
@@ -155,7 +146,6 @@ export function ResumePreviewFab() {
                   </div>
                 </div>
 
-                {/* Content Area */}
                 <div className="p-4 md:p-5 overflow-y-auto flex-1 subpixel-antialiased">
                   <div className="relative rounded-xl overflow-hidden border border-white/[0.05] bg-black/40 h-[60vh] md:h-[70vh]">
                     <iframe

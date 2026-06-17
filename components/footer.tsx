@@ -22,14 +22,12 @@ const SOCIAL_LINKS = [
 
 export const Footer = () => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
-    // If it's an internal hash link on the current home page path
     if (link.startsWith("/#") && window.location.pathname === "/") {
       e.preventDefault();
       const id = link.replace("/#", "");
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        // Update URL hash without causing an instant layout jump
         window.history.pushState(null, "", `/#${id}`);
       }
     }
@@ -37,7 +35,6 @@ export const Footer = () => {
 
   return (
     <footer className="w-full relative overflow-hidden border-t border-white/[0.03] bg-[#030307]">
-      {/* ── Space Horizon Background Media ── */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-screen select-none">
         <video
           autoPlay
@@ -50,19 +47,15 @@ export const Footer = () => {
         </video>
       </div>
 
-      {/* ── Linear Vignette Masking ── */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#030307] via-transparent to-transparent pointer-events-none z-10" />
 
-      {/* ── Structural Specular Edge Light ── */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.06] to-transparent z-20" />
 
-      {/* ── Main Context Grid ── */}
       <div className="relative w-full pt-20 pb-10 px-6 sm:px-10 z-20">
         <div className="max-w-6xl mx-auto">
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
             
-            {/* Branding Capsule */}
             <div className="md:col-span-2 flex flex-col items-start space-y-4">
               <div className="flex items-center gap-3 select-none">
                 <Image
@@ -81,10 +74,8 @@ export const Footer = () => {
               </p>
             </div>
 
-            {/* Navigational Arrays */}
             <div className="md:col-span-3 grid grid-cols-2 gap-8 md:justify-items-end">
               
-              {/* Column 1: General */}
               <div className="flex flex-col space-y-4 min-w-[140px]">
                 <h3 className="text-[10px] font-bold text-white uppercase tracking-[0.25em] select-none">
                   General
@@ -106,7 +97,6 @@ export const Footer = () => {
                 </ul>
               </div>
 
-              {/* Column 2: Social Media */}
               <div className="flex flex-col space-y-4 min-w-[140px]">
                 <h3 className="text-[10px] font-bold text-white uppercase tracking-[0.25em] select-none">
                   Social Media
@@ -132,10 +122,8 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Minimalist Border Break */}
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/[0.04] to-transparent mb-8" />
 
-          {/* Baseline Copyright Footer */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 select-none">
             <div className="text-center sm:text-left">
               <p className="text-zinc-500 text-xs font-light">
