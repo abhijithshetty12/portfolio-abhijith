@@ -10,8 +10,10 @@ import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
 
 import { RouteTransitions } from "@/components/route-transitions";
+import { ResumePreviewFab } from "@/components/resume-preview";
 
 import "./globals.css";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Navbar />
         <RouteTransitions>{children}</RouteTransitions>
         <Footer />
+        <ResumePreviewFab />
       </body>
     </html>
   );

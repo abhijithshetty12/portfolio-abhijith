@@ -7,11 +7,9 @@ export const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Exact 1:1 mouse tracking coordinates
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Snappy but smooth physics configuration for Wukong's weapon
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
@@ -62,13 +60,11 @@ export const CustomCursor = () => {
       style={{
         x: smoothX,
         y: smoothY,
-        width: "100px",  // Sets the bounds of the cursor track width
-        height: "100px", // Sets the bounds of the cursor track height
+        width: "100px",
+        height: "100px", 
       }}
       animate={{
-        // Grown state simulation via scaling on link hover
         scale: isHovered ? 1.35 : 1,
-        // Applies a dynamic glowing aura directly onto the PNG alpha channel layers
         filter: isHovered 
           ? "drop-shadow(0 0 12px rgba(220, 38, 38, 0.95)) drop-shadow(0 0 4px rgba(245, 158, 11, 0.6))"
           : "drop-shadow(0 0 6px rgba(220, 38, 38, 0.45))",
@@ -80,7 +76,7 @@ export const CustomCursor = () => {
       }}
     >
       <img
-        src="/ruyi-jingu.png" // Assumes the file is saved directly in your /public directory
+        src="/ruyi-jingu.png"
         alt="Ruyi Jingu Bang"
         className="w-full h-full object-contain"
         draggable={false}
