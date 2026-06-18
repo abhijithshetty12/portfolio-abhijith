@@ -36,8 +36,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <CustomCursor />
         
         <StarsCanvas />
-        <Navbar />
         <RouteTransitions>{children}</RouteTransitions>
+        <Navbar />
         <Footer />
         <ResumePreviewFab />
       </body>

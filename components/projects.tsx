@@ -135,19 +135,7 @@ export const ProjectCard = ({
 };
 
 export const Projects = () => {
-  const rawProjects = PROJECTS as unknown as ProjectItem[];
-
-  const eduFlowProject: ProjectItem = {
-    title: "EduFlow",
-    description: "EduFlow is a modern education management platform built to help students, administrators, and institutions streamline learning workflows. It provides a clean, role-based experience for managing onboarding, compliance, course registration, payments, documents, notifications, and AI-powered support—backed by Firebase for authentication and data storage.",
-    image: "/projects/eduflow.png",
-    link: "https://eduflow-nextgen.vercel.app/",
-    github: "https://github.com/abhijithshetty12/EduFlow",
-    tags: ["React", "Firebase", "Tailwind CSS", "TypeScript"]
-  };
-
-  const typedProjects = [...rawProjects];
-  typedProjects.splice(2, 0, eduFlowProject);
+  const typedProjects = PROJECTS as unknown as ProjectItem[];
 
   const noteworthyProjects = [
     {

@@ -48,7 +48,6 @@ export const BACKEND_SKILL = [
 
 export const FULLSTACK_SKILL = [
   { skill_name: "React Native", image: "/skills/reactnative.png", width: 70, height: 70 },
-  { skill_name: "Tauri", image: "/skills/tauri.png", width: 70, height: 70 },
   { skill_name: "Docker", image: "/skills/docker.png", width: 70, height: 70 },
   { skill_name: "Figma", image: "/skills/figma.png", width: 50, height: 50 },
 ] as const;
@@ -65,6 +64,7 @@ export const PROJECTS = [
     image: "/projects/cinescape.png",
     link: "https://cinescape-films.vercel.app/",
     github: "https://github.com/abhijithshetty12/cinescape",
+    tags: ["React", "Vite", "Tailwind CSS", "TypeScript","TMDB API", "Firebase"],
   },
   {
     title: "SkySense",
@@ -73,7 +73,17 @@ export const PROJECTS = [
     image: "/projects/skysense.png",
     link: "https://skysense-weather.vercel.app/",
     github: "https://github.com/abhijithshetty12/skysense",
+    tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Weather API"],
   },
+  {
+    title: "EduFlow",
+    description:
+      'EduFlow is an innovative educational platform designed to streamline the learning experience. It offers a comprehensive suite of tools and resources to facilitate effective teaching and learning, making education more accessible and engaging for students and educators alike.',
+    image: "/projects/eduflow.png",
+    link: "https://eduflow-education.vercel.app/",
+    github: "https://github.com/abhijithshetty12/eduflow",
+    tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
+  }
 ] as const;
 
 export const NAV_LINKS = [
