@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { HiOutlineEye, HiOutlineArrowDownTray } from "react-icons/hi2";
@@ -35,12 +35,20 @@ export const Skills = () => {
 
   const RESUME_URL = "/resume.pdf";
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
+  // Keep rotation stable on first paint (helps mobile route transitions).
   const rotateValue = useTransform(scrollYProgress, [0, 1], [0, 360]);
+
 
   const getCategorizedSkills = (): readonly SkillItem[] => {
     switch (activeCategory) {
@@ -111,9 +119,8 @@ export const Skills = () => {
 
           <motion.h2
             variants={slideInFromLeft(0.5)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            initial={false}
+            animate="visible"
             className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-4"
           >
             The Secret{" "}
@@ -124,9 +131,8 @@ export const Skills = () => {
 
           <motion.p
             variants={slideInFromRight(0.5)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            initial={false}
+            animate="visible"
             className="text-zinc-400 font-light text-sm sm:text-lg max-w-lg mt-2"
           >
             The precise blend of modern frameworks, robust architectures, and intuitive design patterns.

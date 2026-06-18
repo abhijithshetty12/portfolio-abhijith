@@ -10,6 +10,7 @@ const GENERAL_LINKS = [
   { name: "Home", link: "/", icon: HiHome },
   { name: "About", link: "/about", icon: HiUser },
   { name: "Skills", link: "/skills", icon: HiCommandLine },
+  { name: "Experience", link: "/experience", icon: HiBriefcase },
   { name: "Projects", link: "/projects", icon: HiBriefcase },
   { name: "Contact", link: "/contact", icon: HiEnvelope },
 ];
