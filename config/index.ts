@@ -41,10 +41,10 @@ export const siteConfig: Metadata = {
   openGraph: {
     type: "website",
     title: "Abhijith Shetty",
-    description: "Welcome to my full stack Next.js 14 space portfolio.",
+    description: "Welcome to my full stack Next.js 14 portfolio.",
     images: [
       {
-        url: "/og?section=home",
+        url: "/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Abhijith Portfolio preview",
@@ -57,7 +57,7 @@ export const siteConfig: Metadata = {
     description: "Welcome to my full stack Next.js 14 space portfolio.",
     images: [
       {
-        url: "/og?section=home",
+        url: "/opengraph.png",
         width: 1200,
         height: 630,
         alt: "Abhijith Portfolio preview",
