@@ -69,7 +69,7 @@ export const PROJECTS = [
   {
     title: "SkySense",
     description:
-      'Step into the extraordinary world of my professional journey through the "Interactive Cards Portfolio" - an innovative and visually captivating platform that redefines the traditional portfolio experience. Ditching the conventional static layout, this portfolio leverages interactive cards to showcase my skills, projects, and personality in an engaging and dynamic manner.',
+      'SkySense is a modern weather dashboard that combines real-time meteorological data with AI-powered predictions. Featuring glassmorphic UI in light and dark modes, it delivers clean forecasts, ensemble ML analytics, and intuitive visualizations for accurate, user-friendly weather insights.',
     image: "/projects/skysense.png",
     link: "https://skysense-weather.vercel.app/",
     github: "https://github.com/abhijithshetty12/skysense",
@@ -85,6 +85,46 @@ export const PROJECTS = [
     tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
   }
 ] as const;
+
+export const noteworthyProjects = [
+    {
+      title: "FinTrack",
+      description: "FinTrack is a sleek, lightweight web application designed to help you take control of your financial life. Built with a robust Flask backend and a responsive vanilla JS frontend, it offers real-time insights into your spending habits through interactive visualizations.",
+      github: "https://github.com/abhijithshetty12/FinTrack",
+      link: "https://fintrack-vault.vercel.app/",
+      tags: ["Python", "Flask", "JavaScript", "Chart.js", "MySQL"]
+    },
+    {
+      title: "Academia",
+      description: "A modern, fully-customized Java Swing desktop application for managing students and courses. Built with JDBC + MySQL and zero external UI libraries to ensure every visual detail is handcrafted using pure Swing.",
+      github: "https://github.com/abhijithshetty12/Academia",
+      tags: ["Java", "Swing", "JDBC", "MySQL", "Maven"]
+    },
+    {
+      title: "Simple Banking System",
+      description: "A modern, desktop-based banking application built with Python, Tkinter, and SQLite3. This project features a sophisticated UI inspired by Bento and Liquid Glass design principles, offering a seamless user experience for basic financial management.",
+      github: "https://github.com/abhijithshetty12/Simple-Banking-System",
+      tags: ["Python", "Tkinter", "SQLite3"]
+    },
+    {
+      title: "Contact Manager",
+      description: "A high-performance Java desktop application for contact management, featuring robust input validation and persistent data storage.",
+      github: "https://github.com/abhijithshetty12/Contact-Manager",
+      tags: ["Java", "Swing", "CSV Parsing"]
+    },
+    {
+      title: "Hardware Shop Management",
+      description: "A highly resilient enterprise management solution optimized for hardware distributors. Built on a desktop architecture utilizing C# Windows Forms and high-performance SQL Server schemas.",
+      github: "https://github.com/abhijithshetty12/Hardware-Shop-Management",
+      tags: ["C#", ".NET", "SQL Server"]
+    },
+    {
+      title: "BFS Maze Solver",
+      description: "A modern JavaFX application that visualizes the Breadth-First Search (BFS) algorithm as it navigates a 2D grid-based maze. This tool provides a clear visual representation of how pathfinding algorithms find the shortest path while avoiding obstacles.",
+      github: "https://github.com/abhijithshetty12/MazeSolver",
+      tags: ["Java", "Breadth-First Search", "Graph Traversal"]
+    }
+  ];
 
 export const NAV_LINKS = [
   {

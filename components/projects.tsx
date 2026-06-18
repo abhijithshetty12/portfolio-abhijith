@@ -4,11 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { PROJECTS } from "@/constants";
+import { PROJECTS, noteworthyProjects } from "@/constants";
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/lib/motion";
 import { StarsCanvas } from "./star-background";
 import { FaGithub } from "react-icons/fa";
-import { HiArrowUpRight, HiSparkles } from "react-icons/hi2";
+import { HiArrowTopRightOnSquare, HiSparkles } from "react-icons/hi2";
 
 type ProjectCardProps = {
   src: string;
@@ -46,9 +46,8 @@ export const ProjectCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`flex flex-col ${
-        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-      } items-center gap-8 lg:gap-0 relative w-full`}
+      className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+        } items-center gap-8 lg:gap-0 relative w-full`}
     >
       <div className="w-full lg:w-[60%] relative group">
         <div className="absolute -inset-px bg-gradient-to-b from-white/[0.08] to-transparent rounded-2xl opacity-40 group-hover:opacity-100 transition-all duration-700 blur-[2px]" />
@@ -117,7 +116,7 @@ export const ProjectCard = ({
               Launch System
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-zinc-400 transition-all duration-300 group-hover/link:w-full" />
             </span>
-            <HiArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
+            <HiArrowTopRightOnSquare className="w-3.5 h-3.5 text-zinc-400 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
           </Link>
 
           <Link
@@ -137,32 +136,7 @@ export const ProjectCard = ({
 export const Projects = () => {
   const typedProjects = PROJECTS as unknown as ProjectItem[];
 
-  const noteworthyProjects = [
-    {
-      title: "Simple Banking System",
-      description: "A modern, desktop-based banking application built with Python, Tkinter, and SQLite3. This project features a sophisticated UI inspired by Bento and Liquid Glass design principles, offering a seamless user experience for basic financial management.",
-      github: "https://github.com/abhijithshetty12/Simple-Banking-System",
-      tags: ["Python", "Tkinter", "SQLite3"]
-    },
-    {
-      title: "Contact Manager",
-      description: "An offline desktop platform engineered using Java Swing with automated CSV persistence routines. Developed as an industry practices mini-project optimizing basic structural file schemas.",
-      github: "https://github.com/abhijithshetty12/Contact-Manager",
-      tags: ["Java", "Swing", "CSV Parsing"]
-    },
-    {
-      title: "Hardware Shop Management",
-      description: "A highly resilient enterprise management solution optimized for hardware distributors. Built on a desktop architecture utilizing C# Windows Forms and high-performance SQL Server schemas.",
-      github: "https://github.com/abhijithshetty12/Hardware-Shop-Management",
-      tags: ["C#", "WinForms", "SQL Server"]
-    },
-    {
-      title: "BFS Maze Solver",
-      description: "A modern JavaFX application that visualizes the Breadth-First Search (BFS) algorithm as it navigates a 2D grid-based maze. This tool provides a clear visual representation of how pathfinding algorithms find the shortest path while avoiding obstacles.",
-      github: "https://github.com/abhijithshetty12/MazeSolver",
-      tags: ["Java", "Algorithms", "Graph Traversal"]
-    }
-  ];
+  const typedNoteworthyProjects = noteworthyProjects as unknown as ProjectItem[];
 
   return (
     <section
@@ -211,17 +185,13 @@ export const Projects = () => {
         {typedProjects.map((project, index) => {
           const isEven = index % 2 === 0;
           const technicalTags = project.tags || ["TypeScript", "Next.js", "Tailwind"];
-          
-          const displayDescription = project.title === "SkySense" 
-            ? "SkySense is a modern weather dashboard that combines real-time meteorological data with AI-powered predictions. Featuring glassmorphic UI in light and dark modes, it delivers clean forecasts, ensemble ML analytics, and intuitive visualizations for accurate, user-friendly weather insights."
-            : project.description;
 
           return (
             <ProjectCard
               key={project.title}
               src={project.image}
               title={project.title}
-              description={displayDescription}
+              description={project.description}
               link={project.link}
               github={project.github}
               tags={technicalTags}
@@ -260,14 +230,26 @@ export const Projects = () => {
                   <span className="font-mono text-[9px] tracking-[0.2em] text-zinc-600 group-hover/minor:text-cyan-500/60 transition-colors duration-300 uppercase">
                     Build Module 0{i + 1}
                   </span>
-                  <Link
-                    href={subProject.github}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="p-2 rounded-lg bg-white/[0.01] border border-white/[0.03] text-zinc-500 hover:text-white hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-300"
-                  >
-                    <FaGithub className="w-3.5 h-3.5" />
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    {subProject.link && (
+                      <Link
+                        href={subProject.link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="p-2 rounded-lg bg-white/[0.01] border border-white/[0.03] text-zinc-500 hover:text-white hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-300 group/arrow"
+                      >
+                        <HiArrowTopRightOnSquare className="w-3.5 h-3.5 transition-transform duration-300 group-hover/arrow:translate-x-0.5 group-hover/arrow:-translate-y-0.5" />
+                      </Link>
+                    )}
+                    <Link
+                      href={subProject.github}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="p-2 rounded-lg bg-white/[0.01] border border-white/[0.03] text-zinc-500 hover:text-white hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-300"
+                    >
+                      <FaGithub className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
 
                 <h4 className="text-lg font-bold tracking-tight text-zinc-200 group-hover/minor:text-white transition-colors duration-300 mb-2">
