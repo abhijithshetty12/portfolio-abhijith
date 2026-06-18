@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { HiBriefcase, HiCalendar, HiMapPin, HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { HiBriefcase, HiCalendar, HiMapPin, HiArrowTopRightOnSquare, HiTv } from "react-icons/hi2";
 import { FaGithub } from "react-icons/fa6";
 import { StarsCanvas } from "./star-background";
 
@@ -11,20 +11,25 @@ export default function Experience() {
       company: "NullClass Edtech Private Limited",
       duration: "Jan 2025 - Jun 2025",
       location: "Remote",
-      logo: "/nullclass-logo.png", 
+      logo: "/nullclass-logo.png",
       description:
-        "I worked remotely as a Front-End Web Developer Intern at NullClass, where I designed and built MovieDB Fusion, a responsive movie database application using HTML, CSS, JavaScript, and Tailwind CSS. I integrated Firebase Authentication and managed user data with Cloud Firestore, while fetching and displaying movies, actors, crews, and trailers through the TMDB API. This internship gave me hands-on experience in modern web development, API integration, and cloud-based data management, helping me build scalable and user-friendly applications.",
-      skills: ["HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Firebase", "Cloud Firestore", "TMDB API"],
-      links: {
-        repo: "https://github.com/abhijithshetty12/MovieDB",
-        demo: "https://moviedb-fusion.vercel.app/"
+        "Gained hands-on experience architectural fundamentals as a Front-End Intern at NullClass. Engineered scalable movie database platforms utilizing modern JavaScript interfaces and Tailwind CSS, while integrating advanced TMDB data streams and secure Firebase architectures.",
+      project: {
+        title: "MovieDB",
+        description: "An interactive, fully responsive IMDb-inspired movie database interface. Features dynamic real-time rendering of trending libraries via TMDB API data pipelines, stateful user-guided client search matrices, and seamless authentication layers optimized for fluid navigation.",
+        screenshot: "/projects/moviedb.jpg",
+        skills: ["React", "Tailwind CSS", "Firebase", "Cloud Firestore", "TMDB API"],
+        links: {
+          repo: "https://github.com/abhijithshetty12/MovieDB",
+          demo: "https://moviedb-fusion.vercel.app/"
+        }
       }
     }
   ];
 
   return (
     <section id="experience" className="w-full min-h-screen py-24 px-6 md:px-8 bg-[#030014] text-white flex flex-col items-center justify-center relative overflow-hidden">
-      
+
       <div className="absolute inset-0 z-[0] pointer-events-none">
         <StarsCanvas />
       </div>
@@ -33,7 +38,7 @@ export default function Experience() {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sky-600/10 rounded-full blur-3xl pointer-events-none z-[1]" />
 
       <div className="max-w-4xl w-full relative z-10">
-        
+
         <div className="text-center mb-16">
           <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
             History
@@ -46,13 +51,13 @@ export default function Experience() {
         <div className="relative border-l border-zinc-800/80 ml-4 md:ml-6 space-y-12">
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative pl-8 md:pl-12 group">
-              
+
               <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-[#030014] border-2 border-zinc-700 flex items-center justify-center group-hover:border-teal-500 transition-colors duration-300 shadow-[0_0_15px_rgba(0,0,0,0.8)] z-20">
                 <HiBriefcase className="text-xs text-zinc-400 group-hover:text-teal-400 transition-colors" />
               </div>
 
               <div className="rounded-3xl bg-zinc-900/30 backdrop-blur-xl border border-white/[0.05] hover:border-white/[0.09] p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.03)] hover:shadow-[0_20px_50px_rgba(56,189,248,0.03)] transition-all duration-300 relative z-10">
-                
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-5 border-b border-zinc-800/60">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 relative rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
@@ -90,40 +95,76 @@ export default function Experience() {
                   {exp.description}
                 </p>
 
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-zinc-800/40 pt-5">
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill, skillIdx) => (
-                      <span 
-                        key={skillIdx}
-                        className="text-[11px] font-medium tracking-wide text-zinc-400 bg-white/[0.03] border border-white/[0.06] hover:border-teal-500/30 hover:text-white px-3 py-1 rounded-xl transition-all duration-200"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                {exp.project && (
+                  <div className="bg-zinc-950/50 border border-white/[0.03] rounded-2xl p-5 mb-2 shadow-inner">
+                    <div className="flex items-center gap-2 mb-4 text-xs font-bold tracking-wider uppercase text-teal-400/90">
+                      <HiTv className="text-base" />
+                      <span>Project Developed</span>
+                    </div>
 
-                  <div className="flex items-center gap-3 shrink-0">
-                    <a 
-                      href={exp.links.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.05] px-3 py-2 rounded-xl transition-all duration-200"
-                    >
-                      <FaGithub className="text-sm" />
-                      <span>Repository</span>
-                    </a>
-                    
-                    <a 
-                      href={exp.links.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs font-semibold text-teal-400 bg-teal-500/5 border border-teal-500/10 hover:border-teal-500/30 hover:bg-teal-500/10 px-3 py-2 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(20,184,166,0.02)]"
-                    >
-                      <span>Live Demo</span>
-                      <HiArrowTopRightOnSquare className="text-sm" />
-                    </a>
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
+                      <a
+                        href={exp.project.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="md:col-span-2 group/screenshot relative block rounded-xl overflow-hidden border border-white/10 hover:border-amber-500/50 bg-zinc-950 aspect-video w-full shadow-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] md:-mt-1 cursor-pointer transition-all duration-300 ease-out"
+                      >
+                        <Image
+                          src={exp.project.screenshot}
+                          alt={`${exp.project.title} Preview`}
+                          fill
+                          priority
+                          className="object-contain group-hover/screenshot:scale-102 transition-transform duration-500 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+                      </a>
+
+                      <div className="md:col-span-3 flex flex-col justify-between h-full space-y-4">
+                        <div>
+                          <h4 className="text-base md:text-lg font-bold text-white tracking-wide">
+                            {exp.project.title}
+                          </h4>
+                          <p className="text-zinc-400 text-xs md:text-sm font-light leading-relaxed mt-2">
+                            {exp.project.description}
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {exp.project.skills.map((skill, sIdx) => (
+                            <span
+                              key={sIdx}
+                              className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/[0.02] border border-white/[0.05] text-zinc-400"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center gap-3 pt-2">
+                          <a
+                            href={exp.project.links.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.05] px-3 py-2 rounded-xl transition-all duration-200"
+                          >
+                            <FaGithub className="text-sm" />
+                            <span>Repository</span>
+                          </a>
+
+                          <a
+                            href={exp.project.links.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-semibold text-teal-400 bg-teal-500/5 border border-teal-500/10 hover:border-teal-500/30 hover:bg-teal-500/10 px-3 py-2 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(20,184,166,0.02)]"
+                          >
+                            <span>Live Demo</span>
+                            <HiArrowTopRightOnSquare className="text-sm" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
 
               </div>
             </div>
