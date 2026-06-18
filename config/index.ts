@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
+  metadataBase: new URL("https://abhijithshetty.vercel.app"),
   title: "Abhijith Shetty",
-  description: "Welcome to my full stack Next.js 14 space portfolio.",
+  description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
   keywords: [
     "reactjs",
     "nextjs",
@@ -40,29 +41,24 @@ export const siteConfig: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Abhijith Shetty",
-    description: "Welcome to my full stack Next.js 14 portfolio.",
+    title: "Abhijith Shetty | Engineering Portfolio",
+    description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
+    url: "https://abhijithshetty.vercel.app",
+    siteName: "Abhijith Shetty Portfolio",
     images: [
       {
-        url: "/opengraph.png",
+        url: "/opengraph.png", 
         width: 1200,
         height: 630,
-        alt: "Abhijith Portfolio preview",
+        alt: "Abhijith Portfolio preview image displaying the engineering layout interface",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhijith Shetty",
-    description: "Welcome to my full stack Next.js 14 space portfolio.",
-    images: [
-      {
-        url: "/opengraph.png",
-        width: 1200,
-        height: 630,
-        alt: "Abhijith Portfolio preview",
-      },
-    ],
+    title: "Abhijith Shetty | Engineering Portfolio",
+    description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
+    images: ["/opengraph.png"],
   },
-} as const;
-
+};
