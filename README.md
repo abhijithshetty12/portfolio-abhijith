@@ -106,8 +106,8 @@ Built using **Next.js App Router** and **TypeScript**, the portfolio delivers a 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/abhijith-space-portfolio.git
-cd abhijith-space-portfolio
+git clone https://github.com/abhijithshetty12/portfolio-abhijith.git
+cd abhijith-portfolio
 ```
 
 Install dependencies:

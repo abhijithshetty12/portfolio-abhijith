@@ -151,6 +151,12 @@ export const Projects = () => {
 
   const noteworthyProjects = [
     {
+      title: "Simple Banking System",
+      description: "A modern, desktop-based banking application built with Python, Tkinter, and SQLite3. This project features a sophisticated UI inspired by Bento and Liquid Glass design principles, offering a seamless user experience for basic financial management.",
+      github: "https://github.com/abhijithshetty12/Simple-Banking-System",
+      tags: ["Python", "Tkinter", "SQLite3"]
+    },
+    {
       title: "Contact Manager",
       description: "An offline desktop platform engineered using Java Swing with automated CSV persistence routines. Developed as an industry practices mini-project optimizing basic structural file schemas.",
       github: "https://github.com/abhijithshetty12/Contact-Manager",
