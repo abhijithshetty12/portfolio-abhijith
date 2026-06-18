@@ -1,10 +1,9 @@
-'use client';
+"use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope, HiAcademicCap } from "react-icons/hi2";
-
 import { NAV_LINKS } from "@/constants";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -33,6 +32,9 @@ export const Navbar = () => {
   }, []);
 
   const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
+    // Force mobile menu closed on any link interaction
+    setIsMobileMenuOpen(false);
+
     if (link.startsWith("/#") && window.location.pathname === "/") {
       e.preventDefault();
       const id = link.replace("/#", "");
@@ -40,7 +42,6 @@ export const Navbar = () => {
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
         window.history.pushState(null, "", `/#${id}`);
-        setIsMobileMenuOpen(false);
       }
     }
   };
@@ -49,8 +50,10 @@ export const Navbar = () => {
     <div className="w-full fixed top-0 z-50 px-6 md:px-8">
       <div className="max-w-6xl mx-auto flex items-center justify-between h-[70px] relative">
         
+        {/* Logo */}
         <Link
           href="/"
+          onClick={(e) => handleScrollClick(e, "/")}
           className={`flex items-center transition-opacity duration-300 ${
             isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
@@ -68,6 +71,7 @@ export const Navbar = () => {
           </div>
         </Link>
 
+        {/* Desktop Links Container */}
         <div 
           className={`hidden md:flex items-center absolute left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out ${
             isScrolled 
@@ -94,6 +98,7 @@ export const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Toggle Button */}
         <button
           type="button"
           aria-label="Toggle Navigation Module"
@@ -105,21 +110,24 @@ export const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <div className="w-5 h-3.5 flex flex-col justify-between relative">
-            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? 'rotate-45 translate-x-[3px] translate-y-[-1px]' : ''}`} />
+            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? 'rotate-45 translate-x-[3px] translate-y-[1px]' : ''}`} />
             <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-200 ${isMobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-x-[3px] translate-y-[1px]' : ''}`} />
+            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-x-[3px] translate-y-[-1px]' : ''}`} />
           </div>
         </button>
       </div>
 
+      {/* Liquid Glass Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-x-0 top-[76px] mx-6 rounded-3xl bg-[#030014]/90 backdrop-blur-2xl border border-white/[0.06] p-6 flex flex-col items-center gap-3 md:hidden shadow-[0_24px_60px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.05)] transition-all duration-500 ease-in-out origin-top ${
-          isMobileMenuOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+        className={`fixed inset-x-0 top-[76px] mx-6 rounded-3xl bg-gradient-to-b from-[#0a0524]/80 via-[#040212]/90 to-[#02010a]/95 backdrop-blur-3xl border border-white/[0.07] ring-1 ring-white/[0.08] p-6 flex flex-col items-center gap-2 md:hidden shadow-[0_30px_70px_rgba(0,0,0,0.85),inset_0_1px_2px_rgba(255,255,255,0.07)] transition-all duration-500 ease-out origin-top ${
+          isMobileMenuOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-24 bg-pink-500/10 rounded-full blur-2xl pointer-events-none" />
+        {/* Subtle Fluid Inner Gradient Glow */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-transparent to-pink-500/5 rounded-3xl pointer-events-none blur-xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-24 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
         
-        <span className="text-[9px] uppercase font-bold tracking-[0.25em] text-zinc-600 mb-2 select-none relative z-10">
+        <span className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-500 mb-3 select-none relative z-10">
           Navigation Map
         </span>
 
@@ -130,13 +138,13 @@ export const Navbar = () => {
               key={link.title}
               href={link.link}
               onClick={(e) => handleScrollClick(e, link.link)}
-              className="w-full py-3 rounded-2xl flex items-center justify-center gap-2.5 text-zinc-400 text-sm font-light tracking-wide hover:text-white border border-white/[0.02] bg-white/[0.01] active:bg-white/[0.04] transition-all duration-300 transform"
+              className="w-full py-3 rounded-2xl flex items-center justify-center gap-3 text-zinc-400 text-sm font-medium tracking-wide border border-white/[0.03] bg-white/[0.02] hover:text-white hover:bg-white/[0.05] hover:border-white/[0.08] active:scale-[0.98] transition-all duration-300 relative z-10"
               style={{ 
-                transitionDelay: isMobileMenuOpen ? `${idx * 40}ms` : "0ms",
-                transform: isMobileMenuOpen ? "none" : "translateY(-10px)"
+                transitionDelay: isMobileMenuOpen ? `${idx * 30}ms` : "0ms",
+                transform: isMobileMenuOpen ? "none" : "translateY(-8px)"
               }}
             >
-              {IconComponent && <IconComponent className="text-base text-zinc-500" />}
+              {IconComponent && <IconComponent className="text-base opacity-70" />}
               <span>{link.title}</span>
             </Link>
           );
