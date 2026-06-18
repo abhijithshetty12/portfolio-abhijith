@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { HiHome, HiUser, HiCommandLine, HiBriefcase, HiEnvelope } from "react-icons/hi2";
-import {NAV_LINKS} from "@/constants"
+import {SOCIAL_LINKS} from "@/constants"
 
 const GENERAL_LINKS = [
   { name: "Home", link: "/", icon: HiHome },
@@ -13,12 +13,6 @@ const GENERAL_LINKS = [
   { name: "Experience", link: "/experience", icon: HiBriefcase },
   { name: "Projects", link: "/projects", icon: HiBriefcase },
   { name: "Contact", link: "/contact", icon: HiEnvelope },
-];
-
-const SOCIAL_LINKS = [
-  { name: "Github", link: "https://github.com/abhijithshetty12", icon: FaGithub },
-  { name: "Linkedin", link: "https://www.linkedin.com/in/abhijithshetty12/", icon: FaLinkedin },
-  { name: "Instagram", link: "https://www.instagram.com/trulyabhijith/", icon: FaInstagram },
 ];
 
 export const Footer = () => {

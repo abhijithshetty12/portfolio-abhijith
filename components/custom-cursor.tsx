@@ -64,7 +64,7 @@ export const CustomCursor = () => {
         height: "100px", 
       }}
       animate={{
-        scale: isHovered ? 1.35 : 1,
+        scale: isHovered ? 1.15 : 1,
         filter: isHovered 
           ? "drop-shadow(0 0 12px rgba(220, 38, 38, 0.95)) drop-shadow(0 0 4px rgba(245, 158, 11, 0.6))"
           : "drop-shadow(0 0 6px rgba(220, 38, 38, 0.45))",

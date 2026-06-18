@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { HiArrowTopRightOnSquare } from 'react-icons/hi2'; // Added a nice icon for opening in a new tab
 
 export function ResumePreviewFab() {
   const [open, setOpen] = useState(false);
@@ -118,7 +119,18 @@ export function ResumePreviewFab() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    {/* New Open PDF Button */}
+                    <a
+                      href={resumeHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-full text-[11px] md:text-xs font-semibold tracking-wide text-zinc-300 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-200 active:scale-[0.98]"
+                    >
+                      <span>Open PDF</span>
+                      <HiArrowTopRightOnSquare className="w-3.5 h-3.5 text-zinc-400" />
+                    </a>
+
                     <a
                       href={resumeHref}
                       download
@@ -156,7 +168,7 @@ export function ResumePreviewFab() {
                   </div>
 
                   <div className="mt-4 text-[11px] text-zinc-500 leading-relaxed">
-                    Tip: If your browser blocks embedded PDF previews, tap <span className="text-zinc-300 font-medium">Download PDF</span> to view directly.
+                    Tip: If your browser blocks embedded PDF previews, tap <span className="text-zinc-300 font-medium">Open PDF</span> or <span className="text-zinc-300 font-medium">Download PDF</span> to view directly.
                   </div>
                 </div>
 

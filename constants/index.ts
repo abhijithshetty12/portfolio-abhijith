@@ -5,6 +5,8 @@ import {
   RxTwitterLogo,
   RxLinkedinLogo,
 } from "react-icons/rx";
+import { FaRegEnvelope, FaMapMarkerAlt} from "react-icons/fa";
+import { FiPhone } from "react-icons/fi";
 
 export const SKILL_DATA = [
   { skill_name: "HTML", image: "/skills/html.png", width: 80, height: 80 },
@@ -189,5 +191,29 @@ export const SOCIAL_LINKS = [
     name: "Instagram",
     icon: RxInstagramLogo,
     link: "https://www.instagram.com/trulyabhijith/",
+  },
+] as const;
+
+export const INFO_CARDS = [
+  {
+    Icon: FaRegEnvelope,
+    label: "Email",
+    sub: "Direct inquiries",
+    display: "abhijithshetty2006@gmail.com",
+    href: "mailto:abhijithshetty2006@gmail.com",
+  },
+  {
+    Icon: FiPhone,
+    label: "Phone",
+    sub: "Mon – Fri, 9 am – 6 pm IST",
+    display: "+91 9082907975",
+    href: "tel:+919082907975",
+  },
+  {
+    Icon: FaMapMarkerAlt,
+    label: "Location",
+    sub: "Remote & On-site",
+    display: "Mumbai, Maharashtra, IN",
+    href: null,
   },
 ] as const;
