@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const siteConfig: Metadata = {
   metadataBase: new URL("https://abhijithshetty.vercel.app"),
   title: "Abhijith Shetty",
-  description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
+  description: "An immersive 3D portfolio built with Next.js App Router, TypeScript, and Three.js. Features fluid Framer Motion animations and Tailwind CSS.",
   keywords: [
     "reactjs",
     "nextjs",
@@ -42,7 +42,7 @@ export const siteConfig: Metadata = {
   openGraph: {
     type: "website",
     title: "Abhijith Shetty | Engineering Portfolio",
-    description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
+    description: "An immersive 3D portfolio built with Next.js App Router, TypeScript, and Three.js. Features fluid Framer Motion animations and Tailwind CSS.",
     url: "https://abhijithshetty.vercel.app",
     siteName: "Abhijith Shetty Portfolio",
     images: [
@@ -58,7 +58,7 @@ export const siteConfig: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Abhijith Shetty | Engineering Portfolio",
-    description: "A balanced fusion of clean engineering architectures, strict parameter structures, and fluid micro-interactions wrapped in an ultra-dark space environment.",
+    description: "An immersive 3D portfolio built with Next.js App Router, TypeScript, and Three.js. Features fluid Framer Motion animations and Tailwind CSS.",
     images: ["/opengraph.png"],
   },
 };

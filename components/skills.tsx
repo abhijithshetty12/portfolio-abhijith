@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { HiOutlineEye, HiOutlineArrowDownTray } from "react-icons/hi2";
 import { StarsCanvas } from "./star-background";
 
@@ -21,7 +21,13 @@ export const Skills = () => {
     offset: ["start end", "end start"],
   });
 
-  const rotateValue = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const smoothScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 25,
+    restDelta: 0.001,
+  });
+
+  const rotateValue = useTransform(smoothScrollProgress, [0, 1], [0, 240]);
 
   const getCategorizedSkills = () => {
     switch (activeCategory) {
@@ -40,70 +46,70 @@ export const Skills = () => {
     <section
       id="skills"
       ref={containerRef}
-      className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-24 px-4"
+      className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-28 px-4 bg-zinc-950 text-white selection:bg-amber-500/30"
     >
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
         <StarsCanvas />
       </div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-amber-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center w-full max-w-5xl mx-auto">
 
-        {/* Torus Element */}
         <motion.div
           style={{ rotate: rotateValue }}
-          className="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 relative flex items-center justify-center select-none cursor-grab active:cursor-grabbing drop-shadow-[0_20px_50px_rgba(217,119,6,0.25)]"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 180, damping: 15 }}
+          className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 relative flex items-center justify-center select-none cursor-grab active:cursor-grabbing group drop-shadow-[0_0_50px_rgba(245,158,11,0.15)]"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
         >
-          <div className="absolute w-48 h-48 bg-amber-500/15 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
+          <div className="absolute inset-0 bg-amber-500/10 rounded-full blur-[60px] opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
           <img
             src="/torus.png"
-            alt="Metallic Glass Torus Element"
+            alt="Metallic Glass Torus"
             draggable={false}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain pointer-events-none filter drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           />
         </motion.div>
 
-        {/* Header Texts */}
-        <div className="w-full h-auto flex flex-col items-center justify-center text-center mt-6 mb-12">
+        <div className="w-full flex flex-col items-center text-center mt-8 mb-14">
           <motion.h2
-            variants={slideInFromLeft(0.5)}
-            initial={false}
+            variants={slideInFromLeft(0.4)}
+            initial="hidden"
             animate="visible"
-            className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-sans font-bold tracking-tight text-zinc-100 mb-4"
           >
             The Secret{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7a3ef8] via-[#e59800] to-[#fcd34d] italic font-cursive pl-2 pr-4 inline-block normal-case drop-shadow-[0_2px_20px_rgba(229,152,0,0.15)]">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-amber-400 to-yellow-200 italic font-serif px-2 inline-block drop-shadow-[0_2px_15px_rgba(245,158,11,0.2)]">
               Sauce
             </span>
           </motion.h2>
 
           <motion.p
-            variants={slideInFromRight(0.5)}
-            initial={false}
+            variants={slideInFromRight(0.4)}
+            initial="hidden"
             animate="visible"
-            className="text-zinc-400 font-light text-sm sm:text-lg max-w-lg mt-2"
+            className="text-zinc-400 font-normal text-sm sm:text-base max-w-md mt-1 leading-relaxed"
           >
-            The precise blend of modern frameworks, robust architectures, and intuitive design patterns.
+            A precise blend of production-ready frameworks, solid architecture choices, and intuitive UX design.
           </motion.p>
-          <div className="w-14 h-[2px] bg-gradient-to-r from-amber-500/50 to-purple-500/50 rounded-full mt-6" />
+          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-zinc-700 to-transparent mt-8" />
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center items-center gap-2 px-2 py-1.5 rounded-full bg-white/[0.01] border border-purple-500/[0.08] backdrop-blur-2xl max-w-full overflow-x-auto mb-14">
+        <div className="flex flex-wrap justify-center items-center gap-1.5 p-1.5 rounded-full bg-zinc-900/60 border border-white/[0.05] backdrop-blur-xl max-w-full overflow-x-auto mb-16 shadow-inner">
           {CATEGORIES.map((category) => (
             <button
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-300 relative ${activeCategory === category ? "text-slate-950 font-bold" : "text-zinc-400 hover:text-amber-200"
+              className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-colors duration-300 relative ${activeCategory === category ? "text-zinc-950 font-semibold" : "text-zinc-400 hover:text-zinc-200"
                 }`}
             >
               {activeCategory === category && (
                 <motion.div
                   layoutId="activeSkillTab"
-                  className="absolute inset-0 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 rounded-full shadow-[0_4px_20px_rgba(245,158,11,0.3)]"
-                  transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                  className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-300 rounded-full shadow-[0_2px_12px_rgba(245,158,11,0.25)]"
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 />
               )}
               <span className="relative z-10">{category}</span>
@@ -111,31 +117,37 @@ export const Skills = () => {
           ))}
         </div>
 
-        <div className="w-full max-w-4xl px-2 min-h-[300px]">
+        <div className="w-full max-w-4xl px-2 min-h-[320px]">
           <motion.div
             layout
-            className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-8 gap-3 justify-items-center items-center"
+            className={
+              activeCategory === "All"
+                ? "grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-items-center items-center"
+                : "flex flex-wrap justify-center items-center gap-4"
+            }
           >
             <AnimatePresence mode="popLayout">
               {filteredSkills.map((skill, index) => (
                 <motion.div
                   layout
                   key={skill.skill_name}
-                  initial={{ opacity: 0, scale: 0.3, y: 15, rotate: -5 }}
-                  animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
-                  exit={{ opacity: 0, scale: 0.5, y: 10, transition: { duration: 0.15 } }}
+                  initial={{ opacity: 0, scale: 0.8, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.85, y: 8, transition: { duration: 0.12 } }}
                   transition={{
                     type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                    delay: index * 0.015,
+                    stiffness: 120,
+                    damping: 22,
+                    delay: index * 0.012,
                   }}
-                  whileHover={{ y: -6, scale: 1.05 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
                   style={{ "--brand-color": skill.color } as React.CSSProperties}
-                  className="flex flex-col items-center justify-between p-2.5 w-[80px] h-[85px] sm:w-[95px] sm:h-[100px] rounded-xl bg-[#090514]/40 border border-purple-500/[0.06] hover:border-[var(--brand-color)]/50 hover:bg-zinc-900/40 backdrop-blur-xl shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-colors duration-300 group relative overflow-hidden z-20"
+                  className="flex flex-col items-center justify-center p-3 w-[85px] h-[90px] sm:w-[95px] sm:h-[100px] rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:border-[var(--brand-color)]/40 hover:bg-zinc-900/80 backdrop-blur-md shadow-lg transition-colors duration-300 group relative overflow-hidden z-20"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-color)]/0 to-transparent group-hover:from-[var(--brand-color)]/[0.06] blur-xl transition-all duration-300 pointer-events-none" />
-                  <div className="w-8 h-8 relative flex items-center justify-center my-auto z-30">
+                  {/* Subtle brand color inner glow on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-color)]/0 to-transparent group-hover:from-[var(--brand-color)]/[0.04] blur-md transition-all duration-300 pointer-events-none" />
+
+                  <div className="w-9 h-9 relative flex items-center justify-center z-30 transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={
                         skill.iconSlug === "django"
@@ -145,7 +157,7 @@ export const Skills = () => {
                             : `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.iconSlug}/${skill.iconSlug}-original.svg`
                       }
                       alt={skill.skill_name}
-                      style={{ width: '40px', height: '40px' }}
+                      style={{ width: '36px', height: '36px' }}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (!target.src.includes('-plain.svg')) {
@@ -155,7 +167,7 @@ export const Skills = () => {
                     />
                   </div>
 
-                  <span className="text-[9px] sm:text-[10px] text-zinc-400 font-medium tracking-wide text-center group-hover:text-white transition-colors line-clamp-1 w-full select-none mt-1 z-30">
+                  <span className="text-[10px] text-zinc-500 font-medium tracking-wide text-center group-hover:text-zinc-200 transition-colors line-clamp-1 w-full select-none mt-2.5 z-30">
                     {skill.skill_name}
                   </span>
                 </motion.div>
@@ -164,18 +176,27 @@ export const Skills = () => {
           </motion.div>
         </div>
 
-        <div className="mt-24 flex flex-col items-center gap-6 text-center px-4">
-          <div className="flex flex-col gap-1">
+        <div className="mt-28 flex flex-col items-center gap-6 text-center px-4 w-full">
+          <div className="flex flex-col gap-1.5">
             <h3 className="text-zinc-200 text-base font-medium tracking-wide">Interested in working together?</h3>
-            <p className="text-zinc-500 text-xs max-w-sm font-light">Check out my complete technical milestones and academic background.</p>
+            <p className="text-zinc-500 text-xs max-w-xs font-light leading-relaxed">Check out my complete technical milestones and professional timeline.</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-medium tracking-wider text-zinc-400 border border-purple-500/[0.15] bg-white/[0.01] hover:bg-purple-950/20 hover:text-amber-300 hover:border-amber-500/30 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md active:scale-95 shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
-              <HiOutlineEye className="text-sm opacity-60" />
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mt-2">
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-medium tracking-wider text-zinc-400 border border-white/[0.06] bg-zinc-900/20 hover:bg-zinc-900/80 hover:text-zinc-100 hover:border-zinc-700 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md active:scale-[0.98]"
+            >
+              <HiOutlineEye className="text-sm opacity-70" />
               <span>View CV</span>
             </a>
-            <a href={RESUME_URL} download="resume.pdf" className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-medium tracking-wider text-slate-950 bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 font-bold shadow-[0_4px_20px_rgba(245,158,11,0.2)] hover:shadow-[0_4px_30px_rgba(245,158,11,0.45)] transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+            <a
+              href={RESUME_URL}
+              download="resume.pdf"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider text-zinc-950 bg-gradient-to-r from-amber-400 to-yellow-300 hover:brightness-105 active:brightness-95 shadow-[0_4px_20px_rgba(245,158,11,0.15)] hover:shadow-[0_4px_25px_rgba(245,158,11,0.3)] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98]"
+            >
               <HiOutlineArrowDownTray className="text-sm" />
               <span>Download Resume</span>
             </a>
