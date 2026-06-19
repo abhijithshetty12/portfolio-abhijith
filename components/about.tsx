@@ -13,7 +13,7 @@ const ENHANCED_EDUCATION = EDUCATION.map(edu => ({
   ...edu,
   chapter: edu.school.includes("Thakur") ? "CHAPTER III" : edu.school.includes("Polytechnic") ? "CHAPTER II" : "CHAPTER I",
   department: edu.school.includes("Thakur") ? "AI & Machine Learning" : edu.school.includes("Polytechnic") ? "Information Technology" : "Secondary School",
-  location: edu.school.includes("Thakur") ? "Mumbai" : edu.school.includes("Polytechnic") ? "Bandra, Mumbai" : "Powai, Mumbai",
+  location: edu.school.includes("Thakur") ? "Kandivali, Mumbai" : edu.school.includes("Polytechnic") ? "Bandra, Mumbai" : "Powai, Mumbai",
   percentage: edu.school.includes("Thakur") ? "9.64 CGPA" : edu.school.includes("Polytechnic") ? "91.67%" : "86.40%",
 }));
 
