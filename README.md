@@ -19,7 +19,7 @@
 
 ## 📖 Overview
 
-**Abhijith Portfolio** is a modern, interactive portfolio platform inspired by the beauty of the cosmos. Designed to combine creativity with performance, the application showcases professional projects, technical expertise, and personal achievements through immersive 3D visuals, fluid animations, and a responsive user experience.
+**My Portfolio** is a modern, interactive portfolio platform inspired by the beauty of the cosmos. Designed to combine creativity with performance, the application showcases professional projects, technical expertise, and personal achievements through immersive 3D visuals, fluid animations, and a responsive user experience.
 
 Built using **Next.js App Router** and **TypeScript**, the portfolio delivers a seamless browsing experience while maintaining scalability, accessibility, and production-grade performance.
 
