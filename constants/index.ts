@@ -5,57 +5,128 @@ import {
   RxTwitterLogo,
   RxLinkedinLogo,
 } from "react-icons/rx";
-import { FaRegEnvelope, FaMapMarkerAlt} from "react-icons/fa";
+import { FaRegEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 
-export const SKILL_DATA = [
-  { skill_name: "HTML", image: "/skills/html.png", width: 80, height: 80 },
-  { skill_name: "CSS", image: "/skills/css.png", width: 80, height: 80 },
-  { skill_name: "JavaScript", image: "/skills/js.png", width: 65, height: 65 },
-  { skill_name: "Tailwind CSS", image: "/skills/tailwind.png", width: 80, height: 80 },
-  { skill_name: "React", image: "/skills/react.png", width: 80, height: 80 },
-  { skill_name: "Redux", image: "/skills/redux.png", width: 80, height: 80 },
-  { skill_name: "React Query", image: "/skills/reactquery.png", width: 80, height: 80 },
-  { skill_name: "TypeScript", image: "/skills/ts.png", width: 80, height: 80 },
-  { skill_name: "Next.js 14", image: "/skills/next.png", width: 80, height: 80 },
-  { skill_name: "Framer Motion", image: "/skills/framer.png", width: 80, height: 80 },
-  { skill_name: "Stripe", image: "/skills/stripe.png", width: 80, height: 80 },
-  { skill_name: "Node.js", image: "/skills/node.png", width: 80, height: 80 },
-  { skill_name: "MongoDB", image: "/skills/mongodb.png", width: 40, height: 40 },
+export interface SkillItem {
+  readonly skill_name: string;
+  readonly iconSlug: string;
+  readonly color: string;
+}
+
+export const SKILLS_DATA = [
+  // --- LANGUAGES ---
+  { skill_name: "C", iconSlug: "c", color: "#00599C" },
+  { skill_name: "C#", iconSlug: "csharp", color: "#239120" },
+  { skill_name: "C++", iconSlug: "cplusplus", color: "#00599C" },
+  { skill_name: "Python", iconSlug: "python", color: "#3776AB" },
+  { skill_name: "Java", iconSlug: "java", color: "#ED8B00" },
+  { skill_name: "JavaScript", iconSlug: "javascript", color: "#F7DF1E" },
+  { skill_name: "TypeScript", iconSlug: "typescript", color: "#3178C6" },
+  { skill_name: "SQL", iconSlug: "azuresqldatabase", color: "#E34F26" },
+  { skill_name: "HTML", iconSlug: "html5", color: "#E34F26" },
+  { skill_name: "CSS", iconSlug: "css3", color: "#1572B6" },
+  { skill_name: "Php", iconSlug: "php", color: "#777BB4" },
+  { skill_name: "Ruby", iconSlug: "ruby", color: "#CC342D" },
+  { skill_name: "Markdown", iconSlug: "markdown", color: "#000000" },
+
+  // --- FRAMEWORKS / LIBRARIES ---
+  { skill_name: "React", iconSlug: "react", color: "#61DAFB" },
+  { skill_name: "React Router", iconSlug: "reactrouter", color: "#CA4245" },
+  { skill_name: "Redux", iconSlug: "redux", color: "#764ABC" },
+  { skill_name: "Next.js", iconSlug: "nextjs", color: "#000000" },
+  { skill_name: "Three.js", iconSlug: "threejs", color: "#000000" },
+  { skill_name: "Framer Motion", iconSlug: "framermotion", color: "#F024B6" },
+  { skill_name: ".NET", iconSlug: "dot-net", color: "#512BD4" },
+  { skill_name: "Django", iconSlug: "django", color: "#092E20" },
+  { skill_name: "Express.js", iconSlug: "express", color: "#000000" },
+  { skill_name: "Flask", iconSlug: "flask", color: "#000000" },
+  { skill_name: "Spring", iconSlug: "spring", color: "#6DB33F" },
+  { skill_name: "FastAPI", iconSlug: "fastapi", color: "#009688" },
+  { skill_name: "Flutter", iconSlug: "flutter", color: "#02569B" },
+  { skill_name: "Tailwind CSS", iconSlug: "tailwindcss", color: "#06B6D4" },
+  { skill_name: "Angular", iconSlug: "angular", color: "#DD0031" },
+  { skill_name: "Bootstrap", iconSlug: "bootstrap", color: "#7952B3" },
+  { skill_name: "Prisma", iconSlug: "prisma", color: "#2D3748" },
+
+  // --- DATABASES ---
+  { skill_name: "MySQL", iconSlug: "mysql", color: "#4479A1" },
+  { skill_name: "SQLite", iconSlug: "sqlite", color: "#003B57" },
+  { skill_name: "PostgreSQL", iconSlug: "postgresql", color: "#4169E1" },
+  { skill_name: "MongoDB", iconSlug: "mongodb", color: "#47A248" },
+
+  // --- CLOUD / HOSTING ---
+  { skill_name: "Vercel", iconSlug: "vercel", color: "#000000" },
+  { skill_name: "Firebase", iconSlug: "firebase", color: "#000000" },
+  { skill_name: "AWS", iconSlug: "amazonwebservices", color: "#FF9900" },
+  { skill_name: "Google Cloud", iconSlug: "googlecloud", color: "#4285F4" },
+
+  // --- TOOLS ---
+  { skill_name: "Git", iconSlug: "git", color: "#F05032" },
+  { skill_name: "Github", iconSlug: "github", color: "#181717" },
+  { skill_name: "Vite", iconSlug: "vitejs", color: "#646CFF" },
+  { skill_name: "Postman", iconSlug: "postman", color: "#FF6C37" },
+  { skill_name: "Blender", iconSlug: "blender", color: "#E87D0D" },
+  { skill_name: "Node.js", iconSlug: "nodejs", color: "#5FA04E" },
 ] as const;
 
-export const FRONTEND_SKILL = [
-  { skill_name: "HTML", image: "/skills/html.png", width: 80, height: 80 },
-  { skill_name: "CSS", image: "/skills/css.png", width: 80, height: 80 },
-  { skill_name: "JavaScript", image: "/skills/js.png", width: 65, height: 65 },
-  { skill_name: "Tailwind CSS", image: "/skills/tailwind.png", width: 80, height: 80 },
-  { skill_name: "Material UI", image: "/skills/mui.png", width: 80, height: 80 },
-  { skill_name: "React", image: "/skills/react.png", width: 80, height: 80 },
-  { skill_name: "Redux", image: "/skills/redux.png", width: 80, height: 80 },
-  { skill_name: "React Query", image: "/skills/reactquery.png", width: 80, height: 80 },
-  { skill_name: "TypeScript", image: "/skills/ts.png", width: 80, height: 80 },
-  { skill_name: "Next.js 14", image: "/skills/next.png", width: 80, height: 80 },
+export const LANGUAGES = [
+  { skill_name: "C", iconSlug: "c", color: "#00599C" },
+  { skill_name: "C#", iconSlug: "csharp", color: "#239120" },
+  { skill_name: "C++", iconSlug: "cplusplus", color: "#00599C" },
+  { skill_name: "Python", iconSlug: "python", color: "#3776AB" },
+  { skill_name: "Java", iconSlug: "java", color: "#ED8B00" },
+  { skill_name: "JavaScript", iconSlug: "javascript", color: "#F7DF1E" },
+  { skill_name: "TypeScript", iconSlug: "typescript", color: "#3178C6" },
+  { skill_name: "SQL", iconSlug: "azuresqldatabase", color: "#E34F26" },
+  { skill_name: "HTML", iconSlug: "html5", color: "#E34F26" },
+  { skill_name: "CSS", iconSlug: "css3", color: "#1572B6" },
+  { skill_name: "Php", iconSlug: "php", color: "#777BB4" },
+  { skill_name: "Ruby", iconSlug: "ruby", color: "#CC342D" },
+  { skill_name: "Markdown", iconSlug: "markdown", color: "#000000" },
 ] as const;
 
-export const BACKEND_SKILL = [
-  { skill_name: "Node.js", image: "/skills/node.png", width: 80, height: 80 },
-  { skill_name: "Express.js", image: "/skills/express.png", width: 80, height: 80 },
-  { skill_name: "MongoDB", image: "/skills/mongodb.png", width: 40, height: 40 },
-  { skill_name: "Firebase", image: "/skills/firebase.png", width: 55, height: 55 },
-  { skill_name: "PostgreSQL", image: "/skills/postgresql.png", width: 70, height: 70 },
-  { skill_name: "MySQL", image: "/skills/mysql.png", width: 70, height: 70 },
-  { skill_name: "Prisma", image: "/skills/prisma.png", width: 70, height: 70 },
-  { skill_name: "Graphql", image: "/skills/graphql.png", width: 80, height: 80 },
+export const FRAMEWORKS = [
+  { skill_name: "React", iconSlug: "react", color: "#61DAFB" },
+  { skill_name: "React Router", iconSlug: "reactrouter", color: "#CA4245" },
+  { skill_name: "Redux", iconSlug: "redux", color: "#764ABC" },
+  { skill_name: "Next.js", iconSlug: "nextjs", color: "#000000" },
+  { skill_name: "Three.js", iconSlug: "threejs", color: "#000000" },
+  { skill_name: "Framer Motion", iconSlug: "framermotion", color: "#F024B6" },
+  { skill_name: ".NET", iconSlug: "dot-net", color: "#512BD4" },
+  { skill_name: "Django", iconSlug: "django", color: "#092E20" },
+  { skill_name: "Express.js", iconSlug: "express", color: "#000000" },
+  { skill_name: "Flask", iconSlug: "flask", color: "#000000" },
+  { skill_name: "Spring", iconSlug: "spring", color: "#6DB33F" },
+  { skill_name: "FastAPI", iconSlug: "fastapi", color: "#009688" },
+  { skill_name: "Flutter", iconSlug: "flutter", color: "#02569B" },
+  { skill_name: "Tailwind CSS", iconSlug: "tailwindcss", color: "#06B6D4" },
+  { skill_name: "Angular", iconSlug: "angular", color: "#DD0031" },
+  { skill_name: "Bootstrap", iconSlug: "bootstrap", color: "#7952B3" },
+  { skill_name: "Prisma", iconSlug: "prisma", color: "#2D3748" },
 ] as const;
 
-export const FULLSTACK_SKILL = [
-  { skill_name: "React Native", image: "/skills/reactnative.png", width: 70, height: 70 },
-  { skill_name: "Docker", image: "/skills/docker.png", width: 70, height: 70 },
-  { skill_name: "Figma", image: "/skills/figma.png", width: 50, height: 50 },
+export const DATABASES = [
+  { skill_name: "MySQL", iconSlug: "mysql", color: "#4479A1" },
+  { skill_name: "SQLite", iconSlug: "sqlite", color: "#4479A1" },
+  { skill_name: "PostgreSQL", iconSlug: "postgresql", color: "#4479A1" },
+  { skill_name: "MongoDB", iconSlug: "mongodb", color: "#47A248" },
 ] as const;
 
-export const OTHER_SKILL = [
-  { skill_name: "Go", image: "/skills/go.png", width: 60, height: 60 },
+export const CLOUD = [
+  { skill_name: "Vercel", iconSlug: "vercel", color: "#000000" },
+  { skill_name: "Firebase", iconSlug: "firebase", color: "#000000" },
+  { skill_name: "AWS", iconSlug: "amazonwebservices", color: "#FF9900" },
+  { skill_name: "Google Cloud", iconSlug: "googlecloud", color: "#4285F4" },
+] as const;
+
+export const TOOLS = [
+  { skill_name: "Git", iconSlug: "git", color: "#F05032" },
+  { skill_name: "Github", iconSlug: "github", color: "#181717" },
+  { skill_name: "Vite", iconSlug: "vitejs", color: "#646CFF" },
+  { skill_name: "Postman", iconSlug: "postman", color: "#FF6C37" },
+  { skill_name: "Blender", iconSlug: "blender", color: "#E87D0D" },
+  { skill_name: "Node.js", iconSlug: "nodejs", color: "#5FA04E" },
 ] as const;
 
 export const PROJECTS = [
@@ -66,12 +137,19 @@ export const PROJECTS = [
     image: "/projects/cinescape.png",
     link: "https://cinescape-films.vercel.app/",
     github: "https://github.com/abhijithshetty12/cinescape",
-    tags: ["React", "Vite", "Tailwind CSS", "TypeScript","TMDB API", "Firebase"],
+    tags: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "TypeScript",
+      "TMDB API",
+      "Firebase",
+    ],
   },
   {
     title: "SkySense",
     description:
-      'SkySense is a modern weather dashboard that combines real-time meteorological data with AI-powered predictions. Featuring glassmorphic UI in light and dark modes, it delivers clean forecasts, ensemble ML analytics, and intuitive visualizations for accurate, user-friendly weather insights.',
+      "SkySense is a modern weather dashboard that combines real-time meteorological data with AI-powered predictions. Featuring glassmorphic UI in light and dark modes, it delivers clean forecasts, ensemble ML analytics, and intuitive visualizations for accurate, user-friendly weather insights.",
     image: "/projects/skysense.png",
     link: "https://skysense-weather.vercel.app/",
     github: "https://github.com/abhijithshetty12/skysense",
@@ -80,53 +158,59 @@ export const PROJECTS = [
   {
     title: "EduFlow",
     description:
-      'EduFlow is an innovative educational platform designed to streamline the learning experience. It offers a comprehensive suite of tools and resources to facilitate effective teaching and learning, making education more accessible and engaging for students and educators alike.',
+      "EduFlow is an innovative educational platform designed to streamline the learning experience. It offers a comprehensive suite of tools and resources to facilitate effective teaching and learning, making education more accessible and engaging for students and educators alike.",
     image: "/projects/eduflow.png",
     link: "https://eduflow-education.vercel.app/",
     github: "https://github.com/abhijithshetty12/eduflow",
     tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
-  }
+  },
 ] as const;
 
 export const noteworthyProjects = [
-    {
-      title: "FinTrack",
-      description: "FinTrack is a sleek, lightweight web application designed to help you take control of your financial life. Built with a robust Flask backend and a responsive vanilla JS frontend, it offers real-time insights into your spending habits through interactive visualizations.",
-      github: "https://github.com/abhijithshetty12/FinTrack",
-      link: "https://fintrack-vault.vercel.app/",
-      tags: ["Python", "Flask", "JavaScript", "Chart.js", "MySQL"]
-    },
-    {
-      title: "Academia",
-      description: "A modern, fully-customized Java Swing desktop application for managing students and courses. Built with JDBC + MySQL and zero external UI libraries to ensure every visual detail is handcrafted using pure Swing.",
-      github: "https://github.com/abhijithshetty12/Academia",
-      tags: ["Java", "Swing", "JDBC", "MySQL", "Maven"]
-    },
-    {
-      title: "Simple Banking System",
-      description: "A modern, desktop-based banking application built with Python, Tkinter, and SQLite3. This project features a sophisticated UI inspired by Bento and Liquid Glass design principles, offering a seamless user experience for basic financial management.",
-      github: "https://github.com/abhijithshetty12/Simple-Banking-System",
-      tags: ["Python", "Tkinter", "SQLite3"]
-    },
-    {
-      title: "Contact Manager",
-      description: "A high-performance Java desktop application for contact management, featuring robust input validation and persistent data storage.",
-      github: "https://github.com/abhijithshetty12/Contact-Manager",
-      tags: ["Java", "Swing", "CSV Parsing"]
-    },
-    {
-      title: "Hardware Shop Management",
-      description: "A highly resilient enterprise management solution optimized for hardware distributors. Built on a desktop architecture utilizing C# Windows Forms and high-performance SQL Server schemas.",
-      github: "https://github.com/abhijithshetty12/Hardware-Shop-Management",
-      tags: ["C#", ".NET", "SQL Server"]
-    },
-    {
-      title: "BFS Maze Solver",
-      description: "A modern JavaFX application that visualizes the Breadth-First Search (BFS) algorithm as it navigates a 2D grid-based maze. This tool provides a clear visual representation of how pathfinding algorithms find the shortest path while avoiding obstacles.",
-      github: "https://github.com/abhijithshetty12/MazeSolver",
-      tags: ["Java", "Breadth-First Search", "Graph Traversal"]
-    }
-  ];
+  {
+    title: "FinTrack",
+    description:
+      "FinTrack is a sleek, lightweight web application designed to help you take control of your financial life. Built with a robust Flask backend and a responsive vanilla JS frontend, it offers real-time insights into your spending habits through interactive visualizations.",
+    github: "https://github.com/abhijithshetty12/FinTrack",
+    link: "https://fintrack-vault.vercel.app/",
+    tags: ["Python", "Flask", "JavaScript", "Chart.js", "MySQL"],
+  },
+  {
+    title: "Academia",
+    description:
+      "A modern, fully-customized Java Swing desktop application for managing students and courses. Built with JDBC + MySQL and zero external UI libraries to ensure every visual detail is handcrafted using pure Swing.",
+    github: "https://github.com/abhijithshetty12/Academia",
+    tags: ["Java", "Swing", "JDBC", "MySQL", "Maven"],
+  },
+  {
+    title: "Simple Banking System",
+    description:
+      "A modern, desktop-based banking application built with Python, Tkinter, and SQLite3. This project features a sophisticated UI inspired by Bento and Liquid Glass design principles, offering a seamless user experience for basic financial management.",
+    github: "https://github.com/abhijithshetty12/Simple-Banking-System",
+    tags: ["Python", "Tkinter", "SQLite3"],
+  },
+  {
+    title: "Contact Manager",
+    description:
+      "A high-performance Java desktop application for contact management, featuring robust input validation and persistent data storage.",
+    github: "https://github.com/abhijithshetty12/Contact-Manager",
+    tags: ["Java", "Swing", "CSV Parsing"],
+  },
+  {
+    title: "Hardware Shop Management",
+    description:
+      "A highly resilient enterprise management solution optimized for hardware distributors. Built on a desktop architecture utilizing C# Windows Forms and high-performance SQL Server schemas.",
+    github: "https://github.com/abhijithshetty12/Hardware-Shop-Management",
+    tags: ["C#", ".NET", "SQL Server"],
+  },
+  {
+    title: "BFS Maze Solver",
+    description:
+      "A modern JavaFX application that visualizes the Breadth-First Search (BFS) algorithm as it navigates a 2D grid-based maze. This tool provides a clear visual representation of how pathfinding algorithms find the shortest path while avoiding obstacles.",
+    github: "https://github.com/abhijithshetty12/MazeSolver",
+    tags: ["Java", "Breadth-First Search", "Graph Traversal"],
+  },
+];
 
 export const NAV_LINKS = [
   {
@@ -160,19 +244,22 @@ export const EDUCATION = [
     school: "Thakur College of Engineering and Technology",
     degree: "Bachelor of Technology in AI & ML",
     year: "2025 - Present",
-    description: "Pursuing a B.Tech degree with a focus on AI and ML, gaining expertise in cutting-edge technologies and applications in the field.",
+    description:
+      "Pursuing a B.Tech degree with a focus on AI and ML, gaining expertise in cutting-edge technologies and applications in the field.",
   },
   {
     school: "Government Polytechnic Mumbai, Bandra",
     degree: "Diploma in Information Technology",
     year: "2022 - 2025",
-    description: "Completed a Diploma in Information Technology, acquiring a strong foundation in computer science principles, programming languages, and software development.",
+    description:
+      "Completed a Diploma in Information Technology, acquiring a strong foundation in computer science principles, programming languages, and software development.",
   },
   {
     school: "Powai Municipal English Medium School",
     degree: "SSLC",
     year: "2022",
-    description: "Completed primary and secondary education with a focus on academics and extracurricular activities.",
+    description:
+      "Completed primary and secondary education with a focus on academics and extracurricular activities.",
   },
 ] as const;
 
