@@ -14,10 +14,10 @@ type CategoryType = (typeof CATEGORIES)[number];
 export const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>("All");
   const [isMounted, setIsMounted] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const RESUME_URL = "/resume.pdf";
 
-  // Prevent Framer Motion hydration and viewport mismatch on initial mobile view
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -102,35 +102,88 @@ export const Skills = () => {
           <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-zinc-700 to-transparent mt-8" />
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-1.5 p-1.5 rounded-full bg-zinc-900/60 border border-white/[0.05] backdrop-blur-xl max-w-full overflow-x-auto mb-16 shadow-inner">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category}
+        <div className="relative z-50 mb-12 w-full max-w-xs sm:max-w-xl mx-auto px-2">
+          <div className="sm:hidden w-full relative">
+            <motion.button
               type="button"
-              onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-colors duration-300 relative ${activeCategory === category ? "text-zinc-950 font-semibold" : "text-zinc-400 hover:text-zinc-200"
-                }`}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl bg-zinc-900/80 border border-white/[0.08] backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.4)] text-zinc-200 text-xs font-medium tracking-wide"
+              whileTap={{ scale: 0.98 }}
             >
-              {activeCategory === category && (
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-300 animate-pulse" />
+                Category: <strong className="text-amber-400 font-semibold">{activeCategory}</strong>
+              </span>
+              <motion.svg 
+                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </motion.svg>
+            </motion.button>
+
+            <AnimatePresence>
+              {isDropdownOpen && (
                 <motion.div
-                  layoutId="activeSkillTab"
-                  className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-300 rounded-full shadow-[0_2px_12px_rgba(245,158,11,0.25)]"
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                />
+                  initial={{ opacity: 0, y: -15, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 5, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 26 }}
+                  className="absolute top-full left-0 right-0 rounded-2xl bg-zinc-950/95 border border-white/[0.08] backdrop-blur-2xl p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col gap-1 z-50"
+                >
+                  {CATEGORIES.map((category, idx) => (
+                    <motion.button
+                      key={category}
+                      type="button"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.03 }}
+                      onClick={() => {
+                        setActiveCategory(category);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                        activeCategory === category 
+                          ? "bg-gradient-to-r from-amber-500/20 to-amber-400/5 text-amber-300 border-l-2 border-amber-400" 
+                          : "text-zinc-400 hover:text-zinc-200 hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      {category}
+                    </motion.button>
+                  ))}
+                </motion.div>
               )}
-              <span className="relative z-10">{category}</span>
-            </button>
-          ))}
+            </AnimatePresence>
+          </div>
+
+          <div className="hidden sm:flex items-center justify-center gap-1.5 p-1 rounded-full bg-zinc-900/60 border border-white/[0.05] backdrop-blur-xl mx-auto px-2">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-colors duration-300 relative ${
+                  activeCategory === category ? "text-zinc-950 font-semibold" : "text-zinc-400 hover:text-zinc-200"
+                }`}
+              >
+                {activeCategory === category && (
+                  <motion.div
+                    layoutId="activeSkillTab"
+                    className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-300 rounded-full shadow-[0_2px_12px_rgba(245,158,11,0.25)]"
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  />
+                )}
+                <span className="relative z-10">{category}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="w-full max-w-4xl px-2 min-h-[320px]">
+        <div className="w-full max-w-4xl px-1 min-h-[320px]">
           <motion.div
             layout
-            className={
-              activeCategory === "All"
-                ? "grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-4 justify-items-center items-center"
-                : "flex flex-wrap justify-center items-center gap-4"
-            }
+            className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3 sm:gap-4 justify-items-center items-center"
           >
             <AnimatePresence mode="popLayout">
               {isMounted && filteredSkills.map((skill, index) => (
@@ -142,17 +195,18 @@ export const Skills = () => {
                   exit={{ opacity: 0, scale: 0.85, y: 8, transition: { duration: 0.12 } }}
                   transition={{
                     type: "spring",
-                    stiffness: 120,
-                    damping: 22,
-                    delay: index * 0.012,
+                    stiffness: 140,
+                    damping: 24,
+                    delay: Math.min(index * 0.008, 0.15),
                   }}
                   whileHover={{ y: -5, scale: 1.02 }}
+                  whileTap={{ scale: 0.95 }}
                   style={{ "--brand-color": skill.color } as React.CSSProperties}
-                  className="flex flex-col items-center justify-center p-3 w-[85px] h-[90px] sm:w-[95px] sm:h-[100px] rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:border-[var(--brand-color)]/40 hover:bg-zinc-900/80 backdrop-blur-md shadow-lg transition-colors duration-300 group relative overflow-hidden z-20"
+                  className="flex flex-col items-center justify-center p-2 sm:p-3 w-full aspect-square max-w-[85px] sm:max-w-[95px] rounded-xl sm:rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:border-[var(--brand-color)]/40 hover:bg-zinc-900/80 backdrop-blur-md shadow-lg transition-colors duration-300 group relative overflow-hidden z-20"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-color)]/0 to-transparent group-hover:from-[var(--brand-color)]/[0.04] blur-md transition-all duration-300 pointer-events-none" />
 
-                  <div className="w-9 h-9 relative flex items-center justify-center z-30 transition-transform duration-300 group-hover:scale-105">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 relative flex items-center justify-center z-30 transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={
                         skill.iconSlug === "django"
@@ -162,7 +216,7 @@ export const Skills = () => {
                             : `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.iconSlug}/${skill.iconSlug}-original.svg`
                       }
                       alt={skill.skill_name}
-                      style={{ width: '36px', height: '36px' }}
+                      className="w-full h-full object-contain"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         if (!target.src.includes('-plain.svg')) {
@@ -172,7 +226,7 @@ export const Skills = () => {
                     />
                   </div>
 
-                  <span className="text-[10px] text-zinc-500 font-medium tracking-wide text-center group-hover:text-zinc-200 transition-colors line-clamp-1 w-full select-none mt-2.5 z-30">
+                  <span className="text-[9px] sm:text-[10px] text-zinc-500 font-medium tracking-wide text-center group-hover:text-zinc-200 transition-colors line-clamp-1 w-full select-none mt-2 z-30 px-0.5">
                     {skill.skill_name}
                   </span>
                 </motion.div>
