@@ -186,7 +186,7 @@ export const PROJECTS = [
     description:
       "EduFlow is an innovative educational platform designed to streamline the learning experience. It offers a comprehensive suite of tools and resources to facilitate effective teaching and learning, making education more accessible and engaging for students and educators alike.",
     image: "/projects/eduflow.png",
-    link: "https://eduflow-education.vercel.app/",
+    link: "https://eduflow-nextgen.vercel.app/",
     github: "https://github.com/abhijithshetty12/eduflow",
     tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
   },

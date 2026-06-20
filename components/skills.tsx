@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { HiOutlineEye, HiOutlineArrowDownTray } from "react-icons/hi2";
 import { StarsCanvas } from "./star-background";
@@ -13,8 +13,14 @@ type CategoryType = (typeof CATEGORIES)[number];
 
 export const Skills = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>("All");
+  const [isMounted, setIsMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const RESUME_URL = "/resume.pdf";
+
+  // Prevent Framer Motion hydration and viewport mismatch on initial mobile view
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -127,7 +133,7 @@ export const Skills = () => {
             }
           >
             <AnimatePresence mode="popLayout">
-              {filteredSkills.map((skill, index) => (
+              {isMounted && filteredSkills.map((skill, index) => (
                 <motion.div
                   layout
                   key={skill.skill_name}
@@ -144,7 +150,6 @@ export const Skills = () => {
                   style={{ "--brand-color": skill.color } as React.CSSProperties}
                   className="flex flex-col items-center justify-center p-3 w-[85px] h-[90px] sm:w-[95px] sm:h-[100px] rounded-2xl bg-zinc-900/30 border border-white/[0.04] hover:border-[var(--brand-color)]/40 hover:bg-zinc-900/80 backdrop-blur-md shadow-lg transition-colors duration-300 group relative overflow-hidden z-20"
                 >
-                  {/* Subtle brand color inner glow on hover */}
                   <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-color)]/0 to-transparent group-hover:from-[var(--brand-color)]/[0.04] blur-md transition-all duration-300 pointer-events-none" />
 
                   <div className="w-9 h-9 relative flex items-center justify-center z-30 transition-transform duration-300 group-hover:scale-105">
