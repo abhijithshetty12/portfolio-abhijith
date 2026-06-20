@@ -8,6 +8,32 @@ import {
 import { FaRegEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 
+import { DiReact, DiNodejsSmall } from "react-icons/di";
+import { SiNextdotjs, SiTypescript } from "react-icons/si";
+
+export const TECH_STACK = [
+  { 
+    name: "React", 
+    iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", 
+    glow: "drop-shadow-[0_0_6px_rgba(97,218,251,0.3)]" 
+  },
+  { 
+    name: "Next.js", 
+    iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", 
+    glow: "drop-shadow-[0_0_6px_rgba(255,255,255,0.15)] invert dark:invert-0" // Invert if you need it white on a dark BG
+  },
+  { 
+    name: "Node.js", 
+    iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", 
+    glow: "drop-shadow-[0_0_6px_rgba(95,160,78,0.3)]" 
+  },
+  { 
+    name: "TypeScript", 
+    iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", 
+    glow: "drop-shadow-[0_0_6px_rgba(49,120,198,0.3)]" 
+  },
+] as const;
+
 export interface SkillItem {
   readonly skill_name: string;
   readonly iconSlug: string;

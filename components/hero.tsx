@@ -12,13 +12,7 @@ import {
   slideInFromRight,
   slideInFromTop,
 } from "@/lib/motion";
-
-const TECH_STACK = [
-  { name: "React", icon: "/skills/react.png" },
-  { name: "Next.js", icon: "/skills/next.png" },
-  { name: "Node.js", icon: "/skills/node.png" },
-  { name: "TypeScript", icon: "/skills/ts.png" },
-] as const;
+import { TECH_STACK } from "@/constants";
 
 const chipVariants: Variants = {
   hidden: { opacity: 0, scale: 0.85 },
@@ -101,15 +95,16 @@ export const Hero = () => {
                 variants={chipVariants}
                 className="flex items-center gap-2.5 px-4 py-1.5 rounded-xl bg-white/[0.01] border border-white/[0.06] backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:bg-purple-950/20 hover:border-purple-500/30 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-300 group cursor-default"
               >
-                <div className="relative w-3.5 h-3.5 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-                  <Image
-                    src={tech.icon}
-                    alt={tech.name}
-                    width={14}
-                    height={14}
-                    className="object-contain filter opacity-70 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_6px_rgba(168,85,247,0.2)]"
+                {/* CDN Icon Wrapper */}
+                <div className={`flex items-center justify-center w-3.5 h-3.5 flex-shrink-0 transition-all duration-300 group-hover:scale-110 opacity-70 group-hover:opacity-100 ${tech.glow}`}>
+                  <img
+                    src={tech.iconUrl}
+                    alt={`${tech.name} icon`}
+                    className="w-full h-full object-contain"
                   />
                 </div>
+
+                {/* Text Label */}
                 <span className="text-[12px] text-zinc-400 font-medium group-hover:text-purple-200 transition-colors duration-300">
                   {tech.name}
                 </span>
