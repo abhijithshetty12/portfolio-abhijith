@@ -32,7 +32,6 @@ export const Navbar = () => {
   }, []);
 
   const handleScrollClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, link: string) => {
-    // Force mobile menu closed on any link interaction
     setIsMobileMenuOpen(false);
 
     if (link.startsWith("/#") && window.location.pathname === "/") {
@@ -49,8 +48,6 @@ export const Navbar = () => {
   return (
     <div className="w-full fixed top-0 z-50 px-6 md:px-8">
       <div className="max-w-6xl mx-auto flex items-center justify-between h-[70px] relative">
-        
-        {/* Logo */}
         <Link
           href="/"
           onClick={(e) => handleScrollClick(e, "/")}
@@ -64,14 +61,11 @@ export const Navbar = () => {
             width={45}
             height={45}
             draggable={false}
-            className="cursor-pointer"
           />
           <div className="hidden md:flex font-bold ml-3 text-white text-lg tracking-wide">
             Abhijith<span className="text-red-600">.</span>
           </div>
         </Link>
-
-        {/* Desktop Links Container */}
         <div 
           className={`hidden md:flex items-center absolute left-1/2 -translate-x-1/2 transition-all duration-300 ease-in-out ${
             isScrolled 
@@ -97,8 +91,6 @@ export const Navbar = () => {
             })}
           </div>
         </div>
-
-        {/* Mobile Toggle Button */}
         <button
           type="button"
           aria-label="Toggle Navigation Module"
@@ -112,25 +104,20 @@ export const Navbar = () => {
           <div className="w-5 h-3.5 flex flex-col justify-between relative">
             <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? 'rotate-45 translate-x-[3px] translate-y-[1px]' : ''}`} />
             <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-200 ${isMobileMenuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-x-[3px] translate-y-[-1px]' : ''}`} />
+            <span className={`w-full h-[1.5px] bg-zinc-200 rounded-full transition-all duration-300 origin-left ${isMobileMenuOpen ? '-rotate-45 translate-x-[3px] translate-y-[1px]' : ''}`} />
           </div>
         </button>
       </div>
-
-      {/* Liquid Glass Mobile Menu Overlay */}
       <div 
         className={`fixed inset-x-0 top-[76px] mx-6 rounded-3xl bg-gradient-to-b from-[#0a0524]/80 via-[#040212]/90 to-[#02010a]/95 backdrop-blur-3xl border border-white/[0.07] ring-1 ring-white/[0.08] p-6 flex flex-col items-center gap-2 md:hidden shadow-[0_30px_70px_rgba(0,0,0,0.85),inset_0_1px_2px_rgba(255,255,255,0.07)] transition-all duration-500 ease-out origin-top ${
           isMobileMenuOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
         }`}
       >
-        {/* Subtle Fluid Inner Gradient Glow */}
         <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-transparent to-pink-500/5 rounded-3xl pointer-events-none blur-xl" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-24 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-        
         <span className="text-[9px] uppercase font-bold tracking-[0.3em] text-zinc-500 mb-3 select-none relative z-10">
           Navigation Map
         </span>
-
         {NAV_LINKS.map((link, idx) => {
           const IconComponent = ICON_MAP[link.title];
           return (
