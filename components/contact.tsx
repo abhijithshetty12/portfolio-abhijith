@@ -4,12 +4,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa";
-import { FiArrowRight, FiActivity } from "react-icons/fi"; 
+import { FiArrowRight, FiActivity } from "react-icons/fi";
 import { slideInFromTop, slideInFromLeft } from "@/lib/motion";
 import { StarsCanvas } from "./star-background";
 import { SOCIAL_LINKS, INFO_CARDS } from "@/constants";
 
-
+const MotionLink = motion(Link);
 export const ContactContent = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -57,7 +57,7 @@ export const ContactContent = () => {
 
   return (
     <div className="relative flex flex-col items-center min-h-screen w-full px-4 py-32 bg-[#030303] overflow-hidden selection:bg-amber-500/20 selection:text-amber-200">
-      
+
       <div className="absolute inset-0 z-0 pointer-events-none">
         <StarsCanvas />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-amber-500/[0.07] rounded-full blur-[140px] animate-pulse [animation-duration:7s]" />
@@ -71,8 +71,8 @@ export const ContactContent = () => {
           animate="visible"
           className="flex flex-col items-center text-center mb-16"
         >
-          <motion.div 
-            variants={slideInFromTop} 
+          <motion.div
+            variants={slideInFromTop}
             className="mb-4 px-4 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 shadow-[0_0_15px_rgba(245,158,11,0.02)] cursor-default"
           >
             <span className="text-[10px] font-bold text-amber-400 tracking-[0.25em] uppercase">
@@ -96,37 +96,55 @@ export const ContactContent = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mb-6">
-          {INFO_CARDS.map(({ Icon, label, sub, display, href }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * i + 0.2, duration: 0.4 }}
-              className="group relative flex flex-row items-center gap-4 p-4 rounded-xl border border-zinc-900 bg-gradient-to-b from-zinc-900/20 to-transparent backdrop-blur-md hover:border-amber-500/30 hover:bg-zinc-900/40 transition-all duration-300"
-            >
-              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-850 text-zinc-400 group-hover:text-amber-400 group-hover:border-amber-500/20 group-hover:shadow-[0_0_12px_rgba(245,158,11,0.1)] transition-all duration-300 flex-shrink-0">
-                <Icon className="w-4 h-4" />
-              </div>
+          {INFO_CARDS.map(({ Icon, label, sub, display, href }, i) => {
+            const cardProps = {
+              key: label,
+              initial: { opacity: 0, y: 15 },
+              animate: { opacity: 1, y: 0 },
+              transition: { delay: 0.1 * i + 0.2, duration: 0.4 },
+              className: `group relative flex flex-row items-center gap-4 p-4 rounded-xl border border-zinc-900 
+        bg-gradient-to-b from-zinc-900/20 to-transparent backdrop-blur-md 
+        hover:border-amber-500/30 hover:bg-zinc-900/40 transition-all duration-300 
+        ${href ? 'cursor-pointer select-none' : ''}`
+            };
 
-              <div className="flex flex-col min-w-0">
-                <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500/80 mb-0.5">
-                  {label}
-                </span>
-                <span className="text-zinc-200 text-xs font-semibold truncate">
-                  {href ? (
-                    <Link href={href} className="hover:text-blue-400 hover:underline transition-colors duration-200">
-                      {display}
-                    </Link>
-                  ) : (
-                    display
-                  )}
-                </span>
-                <span className="text-[10px] text-zinc-500 mt-0.5 font-light truncate">
-                  {sub}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+            // Card Content Inner JSX
+            const CardContent = (
+              <>
+                <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-850 text-zinc-400 group-hover:text-amber-400 group-hover:border-amber-500/20 group-hover:shadow-[0_0_12px_rgba(245,158,11,0.1)] transition-all duration-300 flex-shrink-0">
+                  <Icon className="w-4 h-4" />
+                </div>
+
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500/80 mb-0.5">
+                    {label}
+                  </span>
+                  <span className="text-zinc-200 text-xs font-semibold truncate group-hover:text-white transition-colors duration-200">
+                    {display}
+                  </span>
+                  <span className="text-[10px] text-zinc-500 mt-0.5 font-light truncate">
+                    {sub}
+                  </span>
+                </div>
+              </>
+            );
+
+            // If href exists, wrap the entire interactive motion container as a Link
+            if (href) {
+              return (
+                <MotionLink href={href} {...cardProps}>
+                  {CardContent}
+                </MotionLink>
+              );
+            }
+
+            // Fallback standard card if no href is provided
+            return (
+              <motion.div {...cardProps}>
+                {CardContent}
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
@@ -217,9 +235,9 @@ export const ContactContent = () => {
                     </div>
 
                     {status === "error" && (
-                      <motion.span 
-                        initial={{ opacity: 0 }} 
-                        animate={{ opacity: 1 }} 
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         className="text-[11px] text-red-400 font-medium"
                       >
                         Failed to deliver. Please try again or email directly.
