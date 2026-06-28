@@ -30,7 +30,6 @@ export const siteConfig: Metadata = {
       },
     ],
     locale: "en_US",
-    publishedTime: "2026-06-17T18:09:32Z",
   },
   twitter: {
     card: "summary_large_image",
@@ -39,6 +38,7 @@ export const siteConfig: Metadata = {
     images: ["/opengraph.png"],
   },
   other: {
+    "article:published_time": "2026-06-17T18:09:32Z",
     "publish-date": "2026-06-17T18:09:32Z",
   },
 };
