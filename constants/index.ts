@@ -163,14 +163,7 @@ export const PROJECTS = [
     image: "/projects/cinescape.png",
     link: "https://cinescape-films.vercel.app/",
     github: "https://github.com/abhijithshetty12/cinescape",
-    tags: [
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "TypeScript",
-      "TMDB API",
-      "Firebase",
-    ],
+    tags: [ "React","Vite","Tailwind CSS","TypeScript","TMDB API","Firebase"],
   },
   {
     title: "SkySense",
@@ -188,6 +181,15 @@ export const PROJECTS = [
     image: "/projects/eduflow.png",
     link: "https://eduflow-nextgen.vercel.app/",
     github: "https://github.com/abhijithshetty12/eduflow",
+    tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
+  },
+  {
+    title: "Secura",
+    description:
+      "Secura is a secure document organizer built with Firebase Auth and Firestore, helping users store identity credentials and private files in a categorized vault.",
+    image: "/projects/secura.png",
+    link: "https://secura-vault.vercel.app/",
+    github: "https://github.com/abhijithshetty12/secura",
     tags: ["React", "Vite", "Tailwind CSS", "TypeScript", "Firebase"],
   },
 ] as const;
